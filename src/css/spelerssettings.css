@@ -1,0 +1,68 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5 mei 2019, 21:52:13
+    Author     : bjorn
+*/
+
+.root
+{
+    -fx-background-image: url("/img/MainMenuBackground.png");    
+    -fx-background-size: cover;
+}
+
+.button{
+    -fx-border-color:transparent;
+    -fx-padding: 1em;
+    -fx-background-color: transparent;
+    
+    -fx-background-size: 90px 24px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#btnNext { 
+    -fx-background-image: url("/img/buttonNext.png");
+    -fx-background-size: 90px 24px;
+    -fx-background-repeat: no-repeat;
+    
+}
+
+#btnCancel { 
+    -fx-background-image: url("/img/buttonCancel.png");
+    -fx-background-size: 90px 24px;
+    -fx-background-repeat: no-repeat;
+    
+}
+
+.choice-box .label
+{
+    
+    
+}
+#btnNext:hover
+{
+    -fx-opacity: 0.5;
+}
+
+#btnCancel:hover
+{
+    -fx-opacity: 0.5;
+}
+
+#lblAantalSpelers
+{
+    -fx-font-size: 3em;
+    -fx-text-fill: black;
+}
+
+#lblSpelers
+{
+    -fx-text-fill: black;
+    -fx-font-size: 5em;
+    -fx-font-weight: bold;
+}
+

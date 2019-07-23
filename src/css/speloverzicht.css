@@ -1,0 +1,415 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 7 mei 2019, 16:27:34
+    Author     : bjorn
+*/
+
+.root
+{
+    -fx-background-image: url("/img/SpelBackground.png");
+    -fx-background-size: cover; 
+    
+}
+
+/*****************************************************/
+
+.label
+{
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    
+}
+
+#lblAantalDblOver8{
+    -fx-background-image: url("/img/AantalDblOver8.png");
+    -fx-background-size: 120px 120px;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+}
+
+#lblAantalDblOver7{
+    -fx-background-image: url("/img/AantalDblOver7.png");
+    -fx-background-size: 120px 120px;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+}
+
+#lblAantalDblOver6{
+    -fx-background-image: url("/img/AantalDblOver6.png");
+    -fx-background-size: 120px 120px;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+}
+
+#lblAantalDblOver5{
+    -fx-background-image: url("/img/AantalDblOver5.png");
+    -fx-background-size: 120px 120px;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+}
+
+#lblAantalDblOver4{
+    -fx-background-image: url("/img/AantalDblOver4.png");
+    -fx-background-size: 120px 120px;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+}
+
+#lblAantalDblOver3{
+    -fx-background-image: url("/img/AantalDblOver3.png");
+    -fx-background-size: 120px 120px;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+}
+
+#lblAantalDblOver2{
+    -fx-background-image: url("/img/AantalDblOver2.png");
+    -fx-background-size: 120px 120px;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+}
+
+#lblAantalDblOver1{
+    -fx-background-image: url("/img/AantalDblOver1.png");
+    -fx-background-size: 120px 120px;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+}
+
+#lblAantalDblOver0{
+    -fx-background-image: url("/img/AantalDblOver0.png");
+    -fx-background-size: 120px 120px;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+}
+
+
+/*****************************************************/
+
+#lblOutputGame{
+    -fx-background-image: url("/img/OutputBackground.png");
+    /*!!!!!*/
+    -fx-background-size: 260px 100px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: transparent;
+}
+
+
+
+/*****************************************************/
+
+#VBbckgrndLeft{
+    -fx-background-image: url("/img/BackgroundPlayerInfo.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 300px 600px;
+    
+}
+
+#VBbckgrndRight{
+    -fx-background-image: url("/img/BackgroundPlayerInfo.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 300px 600px;
+    
+}
+
+
+/*****************************************************/
+
+.button{
+    -fx-border-color:transparent;
+    -fx-padding: 1em;
+    -fx-background-color: transparent;
+    -fx-background-size: 70px 100px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+/*****************************************************/
+
+#btnGooi { 
+    -fx-background-image: url("/img/buttonGooi.png");
+    -fx-background-size: 150px 40px;
+}
+
+#btnStop { 
+    -fx-background-image: url("/img/buttonStop.png");
+    -fx-background-size: 150px 40px;
+}
+
+/*****************************************************/
+
+#btnDice1 { 
+   -fx-background-image: url("/img/Dice1.png");
+   -fx-background-size: 100px 120px;
+}
+
+#btnDice2 { 
+  -fx-background-image: url("/img/Dice2.png");
+  -fx-background-size: 100px 120px;
+}
+
+#btnDice3 { 
+  -fx-background-image: url("/img/Dice3.png");
+  -fx-background-size: 100px 120px;
+}
+
+#btnDice4 { 
+  -fx-background-image: url("/img/Dice4.png");
+  -fx-background-size: 100px 120px;
+}
+
+#btnDice5 { 
+  -fx-background-image: url("/img/Dice5.png");
+  -fx-background-size: 100px 120px;
+}
+
+#btnDice6 { 
+  -fx-background-image: url("/img/Dice6.png");
+  -fx-background-size: 100px 120px;
+}
+
+#btnDiceDisabled{
+    -fx-background-color: transparent;
+    -fx-border-color:transparent;
+    
+}
+
+/*****************************************************/
+
+#btnSaveAndQuit{
+    -fx-background-image: url("/img/buttonSaveQuit.png");
+    -fx-background-size: 150px 40px;
+    
+}
+
+#btnNieuwSpel{
+    -fx-background-image: url("/img/buttonNieuwSpel.png");
+    -fx-background-size: 150px 40px;
+}
+
+/*****************************************************/
+
+#btnUpperTileSpeler1{
+    -fx-background-image: url("/img/TileReverse.png");
+}
+
+#btnUpperTileSpeler2{
+    -fx-background-image: url("/img/TileReverse.png");
+}
+
+#btnUpperTileSpeler3{
+    -fx-background-image: url("/img/TileReverse.png");
+}
+
+#btnUpperTileSpeler4{
+    -fx-background-image: url("/img/TileReverse.png");
+}
+
+#btnUpperTileSpeler5{
+    -fx-background-image: url("/img/TileReverse.png");
+}
+
+#btnUpperTileSpeler6{
+    -fx-background-image: url("/img/TileReverse.png");
+}
+
+#btnUpperTileSpeler7{
+    -fx-background-image: url("/img/TileReverse.png");
+}
+
+
+/*****************************************************/
+
+#btnTegel21{
+    -fx-background-image: url("/img/Tile21.png");
+    
+}
+
+#btnTegel22{
+    -fx-background-image: url("/img/Tile22.png");
+}
+
+#btnTegel23{
+    -fx-background-image: url("/img/Tile23.png");
+}
+
+#btnTegel24{
+    -fx-background-image: url("/img/Tile24.png");
+}
+
+#btnTegel25{
+    -fx-background-image: url("/img/Tile25.png");
+}
+
+#btnTegel26{
+    -fx-background-image: url("/img/Tile26.png");
+}
+
+#btnTegel27{
+    -fx-background-image: url("/img/Tile27.png");
+}
+
+#btnTegel28{
+    -fx-background-image: url("/img/Tile28.png");
+}
+
+#btnTegel29{
+    -fx-background-image: url("/img/Tile29.png");
+}
+
+#btnTegel30{
+    -fx-background-image: url("/img/Tile30.png");
+}
+
+#btnTegel31{
+    -fx-background-image: url("/img/Tile31.png");
+}
+
+#btnTegel32{
+    -fx-background-image: url("/img/Tile32.png");
+}
+
+#btnTegel33{
+    -fx-background-image: url("/img/Tile33.png");
+}
+
+#btnTegel34{
+    -fx-background-image: url("/img/Tile34.png");
+}
+
+#btnTegel35{
+    -fx-background-image: url("/img/Tile35.png");
+}
+
+#btnTegel36{
+    -fx-background-image: url("/img/Tile36.png");
+}
+
+/*****************************************************/
+
+#btnGooi:hover
+{
+    -fx-opacity: 0.5;
+}
+
+#btnStop:hover
+{
+    -fx-opacity: 0.5;
+}
+
+/*****************************************************/
+
+
+#btnDice1:hover
+{
+    -fx-opacity: 0.5;
+}
+
+#btnDice2:hover  /*Check if by andere ook werkt buiten start*/ 
+{
+    -fx-opacity: 0.5;
+}
+
+#btnDice3:hover  /*Check if by andere ook werkt buiten start*/ 
+{
+    -fx-opacity: 0.5;
+}
+
+#btnDice4:hover  /*Check if by andere ook werkt buiten start*/ 
+{
+    -fx-opacity: 0.5;
+}
+
+#btnDice5:hover  /*Check if by andere ook werkt buiten start*/ 
+{
+    -fx-opacity: 0.5;
+}
+
+#btnDice6:hover  /*Check if by andere ook werkt buiten start*/ 
+{
+    -fx-opacity: 0.5;
+}
+
+/*****************************************************/
+
+#btnTegel21:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnTegel22:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnTegel23:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnTegel24:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnTegel25:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnTegel26:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnTegel27:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnTegel28:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnTegel29:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnTegel30:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnTegel31:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnTegel32:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnTegel33:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnTegel34:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnTegel35:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnTegel36:hover{
+    -fx-opacity: 0.5;
+}
+
+/******************************************************************************/
+
+#btnSaveAndQuit:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnNieuwSpel:hover{
+    -fx-opacity: 0.5;
+}
+/******************************************************************************/

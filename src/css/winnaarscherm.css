@@ -1,0 +1,59 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10 mei 2019, 19:54:30
+    Author     : bjorn
+*/
+
+.root{
+    -fx-background-image: url("/img/WinnerBG.png");
+    -fx-background-size: cover; 
+}
+
+#btnNieuwSpel{
+    -fx-background-image: url("/img/buttonNieuwSpel.png");
+
+    -fx-background-size: cover;
+
+    -fx-border-color:transparent;
+    -fx-padding: 1em;
+    -fx-background-color: transparent;
+
+
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+
+}
+
+#btnOpnieuwSpelen{
+    -fx-background-image: url("/img/buttonOpnieuwSpelen.png");
+
+    -fx-background-size: cover;
+
+    -fx-border-color:transparent;
+    -fx-padding: 1em;
+    -fx-background-color: transparent;
+
+
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+
+}
+
+#lblWinnaar{
+    -fx-font-size: 5em;
+    -fx-font-weight: bold;
+    -fx-text-fill: gold;
+    
+}
+
+#btnNieuwSpel:hover{
+    -fx-opacity: 0.5;
+}
+
+#btnOpnieuwSpelen:hover{
+    -fx-opacity: 0.5;
+}

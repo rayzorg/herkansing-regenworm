@@ -1,0 +1,69 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5 mei 2019, 21:14:37
+    Author     : bjorn
+*/
+.root
+{
+    -fx-background-image: url("/img/MainMenuBackground.png");
+    -fx-background-size: cover; 
+    
+}
+
+.button{
+    -fx-border-color:transparent;
+    -fx-padding: 1em;
+    -fx-background-color: transparent;
+    
+    -fx-background-size: 150px 40px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#btnStart { 
+    -fx-background-image: url("/img/buttonStart.png");
+}
+
+#btnResume { 
+    -fx-background-image: url("/img/buttonResume.png");
+}
+
+#btnHighScores { 
+   -fx-background-image: url("/img/buttonHighscores.png");
+}
+
+#btnGameRules { 
+  /*  -fx-background-image: url("/img/buttonGameRules");*/
+  -fx-background-image: url("/img/buttonRules.png");
+}
+
+#btnGameRules:hover
+{
+    
+    -fx-opacity: 0.5;
+}
+
+#btnHighScores:hover
+{
+    
+    -fx-opacity: 0.5;
+}
+
+#btnResume:hover
+{
+    
+    -fx-opacity: 0.5;
+}
+
+#btnStart:hover  /*Check if by andere ook werkt buiten start*/ 
+{
+    
+    -fx-opacity: 0.5;
+}
+
+
+
