@@ -93,28 +93,34 @@ public class SpelOverzicht extends BorderPane{
         
         //Labels
         //currentPlayer.getnaam
-         
+          ArrayList <Button> btnDices =new ArrayList<>();
+          ArrayList <Button> btnUpperTilesPlayers =new ArrayList<>(); // op basis van het aantal spelers aan deze array de upper tile buttons toevoegen
+        int g=0;
         
         for (int spelers = 0; spelers < dc.getSpelersArrayList().size(); spelers++) {
+            
             String naam=dc.getSpelersArrayList().get(spelers).getTxfNaam1().getText();
-            Label lblCurrentPlayer = new Label(String.format("huidige speler : %n %s",naam)); // voor in Leftgp te zetten
-            gpLeft.add(lblCurrentPlayer, 0, 1);
+            Label lblCurrentPlayer = new Label(String.format("huidige speler : %n %s",dc.getSpelersArrayList().get(spelers).getTxfNaam1().getText())); // voor in Leftgp te zetten
+            gpLeft.add(lblCurrentPlayer, g, 0);
+            
+            Label lblSpeler1 = new Label(dc.getSpelersArrayList().get(spelers).getTxfNaam1().getText());  
+            Button btnUpperTileSpeler1 = new Button();
+            btnUpperTilesPlayers.add(btnUpperTileSpeler1);
+            
+            gpRight.add(lblSpeler1, g, spelers);
+            gpRight.add(btnUpperTileSpeler1, g+1, spelers); // bovensteTegel van een player maar voorlopig gebruiken we dit als tijdelijke replacement
+            
+            
         }
         //Label lblCurrentPlayer = new Label(/*"dc.currentPlayer.getnaam"*/"Huidige Speler : %n /s",dc.getSpelersArrayList().get(spelers).toString()); // voor in Leftgp te zetten
         Label lblScoreCurrentPlayer = new Label(String.format("Score: %d", dc.berekenScore()));
         
         
-        Label lblSpeler1 = new Label("Jan");  
-        Label lblSpeler2 = new Label("Joe");     
-        Label lblSpeler3 = new Label("Joel");     
-        Label lblSpeler4 = new Label("Jarne");     
-        Label lblSpeler5 = new Label("Jeff");     
-        Label lblSpeler6 = new Label("Jari");     
-        Label lblSpeler7 = new Label("Josh");     
+         
+            
 //Buttons **********************************************************************
         
-        ArrayList <Button> btnDices =new ArrayList<>();
-        ArrayList <Button> btnUpperTilesPlayers =new ArrayList<>(); // op basis van het aantal spelers aan deze array de upper tile buttons toevoegen
+        
         
         Button IDdbl = new Button(); // passieve knop wordt gebruikt voor een controle
         
@@ -1538,7 +1544,12 @@ public class SpelOverzicht extends BorderPane{
                 
             }
         });
-        
+        for(int k=0;k<btnDices.size();k++){
+            if(IDdbl.getId()==btnDices.get(k).getId()){
+                btnDices.remove(btnDices.get(k));
+            }
+        }
+            
         
         btnDice8.setPrefSize(100, 130);
         
@@ -1693,19 +1704,10 @@ public class SpelOverzicht extends BorderPane{
         
         vboxMiddle.getChildren().addAll(gpCenter, throwOrStop);
         
-        gpRight.add(lblSpeler1, 0, 0);
-        gpRight.add(btnUpperTileSpeler1, 0, 1); // bovensteTegel van een player maar voorlopig gebruiken we dit als tijdelijke replacement
+        //gpRight.add(lblSpeler1, 0, 0);
+        //gpRight.add(btnUpperTileSpeler1, 0, 1); // bovensteTegel van een player maar voorlopig gebruiken we dit als tijdelijke replacement
         // met for loop aantalspelers in de spelersarraylist doorlopen om dan via die weg aan gpRight de naam en upperTile te adden
-        gpRight.add(lblSpeler2, 1, 0);
-        gpRight.add(btnUpperTileSpeler2, 1, 1);
-        gpRight.add(lblSpeler3, 0, 2);
-        gpRight.add(btnUpperTileSpeler3, 0, 3);
-        gpRight.add(lblSpeler4, 1, 2);
-        gpRight.add(btnUpperTileSpeler4, 1, 3);
-        gpRight.add(lblSpeler5, 0, 4);
-        gpRight.add(btnUpperTileSpeler5, 0, 5);
-        gpRight.add(lblSpeler6, 1, 4);
-        gpRight.add(btnUpperTileSpeler6, 1, 5);
+        
         
         
         
