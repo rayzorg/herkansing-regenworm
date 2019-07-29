@@ -7,6 +7,7 @@ package gui;
 
 import domein.DomeinController;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -97,6 +98,7 @@ public class SpelOverzicht extends BorderPane{
           ArrayList <Button> btnUpperTilesPlayers =new ArrayList<>(); // op basis van het aantal spelers aan deze array de upper tile buttons toevoegen
         int g=0;
         
+       
         for (int spelers = 0; spelers < dc.getSpelersArrayList().size(); spelers++) {
             
             String naam=dc.getSpelersArrayList().get(spelers).getTxfNaam1().getText();
@@ -107,21 +109,61 @@ public class SpelOverzicht extends BorderPane{
             Button btnUpperTileSpeler1 = new Button();
             btnUpperTilesPlayers.add(btnUpperTileSpeler1);
             
+            
+       
+         
+            
             gpRight.add(lblSpeler1, g, spelers);
             gpRight.add(btnUpperTileSpeler1, g+1, spelers); // bovensteTegel van een player maar voorlopig gebruiken we dit als tijdelijke replacement
             
             
-        }
-        //Label lblCurrentPlayer = new Label(/*"dc.currentPlayer.getnaam"*/"Huidige Speler : %n /s",dc.getSpelersArrayList().get(spelers).toString()); // voor in Leftgp te zetten
-        Label lblScoreCurrentPlayer = new Label(String.format("Score: %d", dc.berekenScore()));
+             
+             //btn1        
         
+            btnUpperTileSpeler1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent ae) {
+               // btnUpperTileSpeler1OnAction(ae);
+            }
+            });
         
-         
+            btnUpperTileSpeler1.setId("btnUpperTileSpeler1");
+            btnUpperTileSpeler1.setPrefSize(100, 160);
             
-//Buttons **********************************************************************
+            //////////////////////////
+           
         
         
         
+
+//btns voor bovensteTegelsStapels----------------------------------------------
+
+
+/*
+//btn1        
+        
+        btnUpperTileSpeler1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent ae) {
+               // btnUpperTileSpeler1OnAction(ae);
+            }
+        });
+        
+        btnUpperTileSpeler1.setId("btnUpperTileSpeler1");
+        btnUpperTileSpeler1.setPrefSize(100, 160);
+      */  
+
+
+
+       
+        
+        }
+        Label lblScoreCurrentPlayer = new Label(String.format("Score: %d", dc.berekenScore()));
+            gpLeft.add(lblScoreCurrentPlayer, g, 1);
+        
+        // Label lblScoreCurrentPlayer = new Label(String.format("Score: %d", dc.berekenScore()));
+         //gpLeft.add(lblScoreCurrentPlayer, 0, 1);
+         
         Button IDdbl = new Button(); // passieve knop wordt gebruikt voor een controle
         
         int huidigeSpeler = 0; // als tegel is genomen wordt huidigeSpeler verhoogt (++) -> if huidigeSpeler == spelerArrayListSize dan huidige speler = 0
@@ -146,22 +188,6 @@ public class SpelOverzicht extends BorderPane{
         
         Button btnSaveAndQuit = new Button();
         
-        Button btnUpperTileSpeler1 = new Button();
-        Button btnUpperTileSpeler2 = new Button();
-        Button btnUpperTileSpeler3 = new Button();
-        Button btnUpperTileSpeler4 = new Button();
-        Button btnUpperTileSpeler5 = new Button();
-        Button btnUpperTileSpeler6 = new Button();
-        Button btnUpperTileSpeler7 = new Button();
-        
-        //for loop spelersarraylist 
-        btnUpperTilesPlayers.add(btnUpperTileSpeler1);
-        btnUpperTilesPlayers.add(btnUpperTileSpeler2);
-        btnUpperTilesPlayers.add(btnUpperTileSpeler3);
-        btnUpperTilesPlayers.add(btnUpperTileSpeler4);
-        btnUpperTilesPlayers.add(btnUpperTileSpeler5);
-        btnUpperTilesPlayers.add(btnUpperTileSpeler6);
-        btnUpperTilesPlayers.add(btnUpperTileSpeler7);
         
         
         Button btnTegel21 = new Button();
@@ -238,7 +264,8 @@ public class SpelOverzicht extends BorderPane{
         btnDice8.setId("btnDiceDisabled");
         
        
-//btn Save & Quit --------------------------------------------------------
+        
+        //btn Save & Quit --------------------------------------------------------
         
         btnSaveAndQuit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -250,13 +277,66 @@ public class SpelOverzicht extends BorderPane{
         btnSaveAndQuit.setId("btnSaveAndQuit");
         btnSaveAndQuit.setPrefSize(220, 50);
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //Label lblScoreCurrentPlayer = new Label(String.format("Score: %d", dc.berekenScore()));
+        
+        
+         
+            
+//Buttons **********************************************************************
+        
+        
+        
+        
+
 //btns voor bovensteTegelsStapels----------------------------------------------
 
 
 
 //btn1        
         
-        btnUpperTileSpeler1.setOnAction(new EventHandler<ActionEvent>() {
+      /*  btnUpperTileSpeler1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent ae) {
                // btnUpperTileSpeler1OnAction(ae);
@@ -265,80 +345,8 @@ public class SpelOverzicht extends BorderPane{
         
         btnUpperTileSpeler1.setId("btnUpperTileSpeler1");
         btnUpperTileSpeler1.setPrefSize(100, 160);
-        
-//btn2  
-        
-        btnUpperTileSpeler2.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent ae) {
-               // btnUpperTileSpeler2OnAction(ae);
-            }
-        });
-        
-        btnUpperTileSpeler2.setId("btnUpperTileSpeler2");
-        btnUpperTileSpeler2.setPrefSize(100, 160);
-        
-//btn3        
-        
-        btnUpperTileSpeler3.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent ae) {
-               // btnUpperTileSpeler3OnAction(ae);
-            }
-        });
-        
-        btnUpperTileSpeler3.setId("btnUpperTileSpeler3");
-        btnUpperTileSpeler3.setPrefSize(100, 160);
-        
-//btn4         
-        
-        btnUpperTileSpeler4.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent ae) {
-               // btnUpperTileSpeler4OnAction(ae);
-            }
-        });
-        
-        btnUpperTileSpeler4.setId("btnUpperTileSpeler4");
-        btnUpperTileSpeler4.setPrefSize(100, 160);
-        
-//btn5        
-        
-        btnUpperTileSpeler5.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent ae) {
-               // btnUpperTileSpeler5OnAction(ae);
-            }
-        });
-        
-        btnUpperTileSpeler5.setId("btnUpperTileSpeler5");
-        btnUpperTileSpeler5.setPrefSize(100, 160);
-
-//btn6        
-        
-        btnUpperTileSpeler6.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent ae) {
-               // btnUpperTileSpeler6OnAction(ae);
-            }
-        });
-
-//btn7        
-        btnUpperTileSpeler6.setId("btnUpperTileSpeler6");
-        btnUpperTileSpeler6.setPrefSize(100, 160);
-        
-        
-        btnUpperTileSpeler7.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent ae) {
-               // btnUpperTileSpeler7OnAction(ae);
-            }
-        });
-        
-        btnUpperTileSpeler7.setId("btnUpperTileSpeler7");
-        btnUpperTileSpeler7.setPrefSize(100, 160);
-        
-        
+      
+*/
 //btns vr tegelRij--------------------------------------------------------
         
         btnTegel21.setOnAction(new EventHandler<ActionEvent>() {
@@ -515,6 +523,8 @@ public class SpelOverzicht extends BorderPane{
         
         btnTegel36.setId("btnTegel36");
         btnTegel36.setPrefSize(100, 160);
+        
+        
         
 //btnsDblst----------------------------------------------------------
 
@@ -827,13 +837,13 @@ public class SpelOverzicht extends BorderPane{
                     IDdbl.setId(btnDice1.getId());                           // String IDdbl wordt gelyk gezet aan ID van deze button want in volgend blokje 
                                                                         // code zou het kunnen dat deze button ID met zichzelf wordt vergeleken en dan dus verkeerd wordt vergeleken
                     
-                    for(int i = 0; i < btnDices.size(); i++){           // alle dobbelstenen die eenzelfde symbool hebben al dat je hebt 
+                 /*   for(int i = 0; i < btnDices.size(); i++){           // alle dobbelstenen die eenzelfde symbool hebben al dat je hebt 
                         if(IDdbl.getId() == btnDices.get(i).getId()){               // genomen worden onzichtbaargezet en gedisabled want anders kan men ze nog nemen
                             btnDices.get(i).setDisable(true);               // En ook worden deze uit de arraylist van btnDices geremoved zodat ze by nieuwe "gooi" niet meer meedoen
                             btnDices.get(i).setId("btnDiceDisabled");
                             btnDices.remove(btnDices.get(i));
                         }
-                    }
+                    }*/
                     
                     if(dc.berekenAantalDobbelsteen() == 0){               // als dobbelstenen op zijn wordt gooi en stop op disabled gezet (tegel pakken en dan volgende zijn beurt)
                     btnGooi.setDisable(true); 
@@ -990,13 +1000,13 @@ public class SpelOverzicht extends BorderPane{
                 
                 IDdbl.setId(btnDice2.getId()); 
                 
-                for(int i = 0; i < btnDices.size(); i++){
+               /* for(int i = 0; i < btnDices.size(); i++){
                     if(IDdbl.getId() == btnDices.get(i).getId()){
                         btnDices.get(i).setDisable(true);
                         btnDices.get(i).setId("btnDiceDisabled");
                         btnDices.remove(btnDices.get(i));
                     }
-                }
+                }*/
                 
                 if(dc.berekenAantalDobbelsteen() == 0){
                     btnGooi.setDisable(true);
@@ -1080,13 +1090,13 @@ public class SpelOverzicht extends BorderPane{
                 
                 IDdbl.setId(btnDice3.getId()); 
                 
-                for(int i = 0; i < btnDices.size(); i++){
+                /*for(int i = 0; i < btnDices.size(); i++){
                     if(IDdbl.getId() == btnDices.get(i).getId()){
                         btnDices.get(i).setDisable(true);
                         btnDices.get(i).setId("btnDiceDisabled");
                         btnDices.remove(btnDices.get(i));
                     }
-                }
+                }*/
                 
                 if(dc.berekenAantalDobbelsteen() == 0){
                     btnGooi.setDisable(true);
@@ -1166,13 +1176,13 @@ public class SpelOverzicht extends BorderPane{
                 
                 IDdbl.setId(btnDice4.getId()); 
                 
-                for(int i = 0; i < btnDices.size(); i++){
+               /* for(int i = 0; i < btnDices.size(); i++){
                     if(IDdbl.getId() == btnDices.get(i).getId()){
                         btnDices.get(i).setDisable(true);
                         btnDices.get(i).setId("btnDiceDisabled");
                         btnDices.remove(btnDices.get(i));
                     }
-                }
+                }*/
                 
                 if(dc.berekenAantalDobbelsteen() == 0){
                     btnGooi.setDisable(true);
@@ -1251,13 +1261,13 @@ public class SpelOverzicht extends BorderPane{
                 
                 IDdbl.setId(btnDice5.getId()); 
                 
-                for(int i = 0; i < btnDices.size(); i++){
+               /* for(int i = 0; i < btnDices.size(); i++){
                     if(IDdbl.getId() == btnDices.get(i).getId()){
                         btnDices.get(i).setDisable(true);
                         btnDices.get(i).setId("btnDiceDisabled");
                         btnDices.remove(btnDices.get(i));
                     }
-                }
+                }*/
                 
                 if(dc.berekenAantalDobbelsteen() == 0){
                     btnGooi.setDisable(true);
@@ -1339,13 +1349,13 @@ public class SpelOverzicht extends BorderPane{
                 
                 IDdbl.setId(btnDice6.getId()); 
                 
-                for(int i = 0; i < btnDices.size(); i++){
+               /* for(int i = 0; i < btnDices.size(); i++){
                     if(IDdbl.getId() == btnDices.get(i).getId()){
                         btnDices.get(i).setDisable(true);
                         btnDices.get(i).setId("btnDiceDisabled");
                         btnDices.remove(btnDices.get(i));
                     }
-                }
+                }*/
                 if(dc.berekenAantalDobbelsteen() == 0){
                     btnGooi.setDisable(true);
                     btnStop.setDisable(true);
@@ -1427,13 +1437,13 @@ public class SpelOverzicht extends BorderPane{
                 
                 IDdbl.setId(btnDice7.getId()); 
                 
-                for(int i = 0; i < btnDices.size(); i++){
+                /*for(int i = 0; i < btnDices.size(); i++){
                     if(IDdbl.getId() == btnDices.get(i).getId()){
                         btnDices.get(i).setDisable(true);
                         btnDices.get(i).setId("btnDiceDisabled");
                         btnDices.remove(btnDices.get(i));
                     }
-                }
+                }*/
                 
                 if(dc.berekenAantalDobbelsteen() == 0){
                     btnGooi.setDisable(true);
@@ -1513,13 +1523,13 @@ public class SpelOverzicht extends BorderPane{
                 
                 IDdbl.setId(btnDice8.getId()); 
                 
-                for(int i = 0; i < btnDices.size(); i++){
+                /*for(int i = 0; i < btnDices.size(); i++){
                     if(IDdbl.getId() == btnDices.get(i).getId()){
                         btnDices.get(i).setDisable(true);
                         btnDices.get(i).setId("btnDiceDisabled");
                         btnDices.remove(btnDices.get(i));
                     }
-                }
+                }*/
                 
                 if(dc.berekenAantalDobbelsteen() == 0){
                     btnGooi.setDisable(true);
@@ -1558,6 +1568,7 @@ public class SpelOverzicht extends BorderPane{
 
 //btnGooi
 
+
         btnGooi.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent ae) {
@@ -1584,10 +1595,40 @@ public class SpelOverzicht extends BorderPane{
                                 break;
                     }
                 
+               /* System.out.printf("%s",dc.getGeworpen().toString());
                 
+                 for (int k = 1; k < 7; k++) {
+                    System.out.printf(" %n" + k + ": " + dc.getZijde()[k]);
+                    
+                }
+                 Scanner input = new Scanner(System.in);
+                 System.out.printf("%n%nKies symbool gegooide dobbelsteen: ");
+                dc.setSymbool(input.nextInt());
+                
+                
+                  System.out.printf("%nAantal Dobbelstenen over: " + dc.berekenAantalDobbelsteen());
+                  dc.getGeworpen().clear();
+                  dc.rolDobbelsteen();
+                  System.out.printf("%s",dc.getGeworpen().toString());
+                
+                 for (int k = 1; k < 7; k++) {
+                    System.out.printf(" %n" + k + ": " + dc.getZijde()[k]);
+                    
+                }
+                
+                 System.out.printf("%n%nKies symbool gegooide dobbelsteen: ");
+                dc.setSymbool(input.nextInt());
+                
+                
+                 */ 
+                  
                 //show berekenAantalDobbelsteen vanboven in wit vakje
                 
-                for(int b=0; b< dc.berekenAantalDobbelsteen(); b++){
+             //opnieuw coderen want hier worden de aantal dobbelstenen over random weergegeven 
+             //AANTAL DOBBELSENEN WORDT OOK NEGATIEF NA ELK GOOI BEURT
+            
+             ////////////////////////////////////////////////////////////////////////////////////////////////////////
+             for(int b=0; b< dc.berekenAantalDobbelsteen(); b++){
                 
                     switch(dc.getGeworpen().get(b)){
                         case 1: btnDices.get(b).setId("btnDice1");
@@ -1635,6 +1676,7 @@ public class SpelOverzicht extends BorderPane{
                     }
                 }
                 
+System.out.printf("%nAantal Dobbelstenen over: " + dc.berekenAantalDobbelsteen());
                 if(dc.getGekozen().containsAll(dc.getGeworpen())){
                     lblAantalDblOver.setId("lblAantalDblOver0");
                     btnGooi.setDisable(true);
@@ -1674,7 +1716,7 @@ public class SpelOverzicht extends BorderPane{
         
 //Alligning ********************************************************************
         
-        
+     
         btnSaveAndQuit.setAlignment(Pos.CENTER_RIGHT);
         lblAantalDblOver.setAlignment(Pos.BOTTOM_CENTER);
         lblOutputGame.setAlignment(Pos.CENTER_LEFT);
@@ -1683,9 +1725,9 @@ public class SpelOverzicht extends BorderPane{
         
         
        // gpLeft.add(lblCurrentPlayer, 0, 0);
-        gpLeft.add(lblScoreCurrentPlayer, 0, 1);
-        //gpLeft.add(/*dc.berekenScore()*/, 1, 1);
-        gpLeft.add(btnUpperTileSpeler7, 0, 2); // bovensteTegel van de current player maar voorlopig gebruiken we dit als tijdelijke replacement
+       // gpLeft.add(lblScoreCurrentPlayer, 0, 1);
+        //gpLeft.add(/*dc.berekenScore(), 1, 1);
+        //gpLeft.add(btnUpperTileSpeler7, 0, 2); // bovensteTegel van de current player maar voorlopig gebruiken we dit als tijdelijke replacement
         
         bckgrndLeft.getChildren().addAll(gpLeft); // buttons random nummers geven en adhv die nummers id linken
         gpCenter.add(btnDice1, 0, 0);
