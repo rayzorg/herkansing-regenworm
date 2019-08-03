@@ -36,7 +36,7 @@ public class Speler {
       //wijzigingen tov ui ;textfield,localdate
     Speler( TextField txfNaam1,LocalDate dob,int result,int berekenAantalDobbelsteen,int totaalScoreSpeler , ArrayList <Integer> eigenStapel, int berekenAantalWormen) {
         setTxfNaam1(txfNaam1);
-       // setNaamSpeler(naamSpeler);
+        setNaamSpeler(naamSpeler);
         setDob( dob);
         this.result=result;
         this.berekenAantalDobbelsteen=berekenAantalDobbelsteen;

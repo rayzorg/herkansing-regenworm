@@ -130,7 +130,7 @@ public class DomeinController {
     //en heeft geen invloed op output (moet kijken naar speler klasse
     
     //wijzigingen tov ui ;textfield,localdate
-    public void spelerInArrayToevoegen( TextField txfNaam1, int aantal, LocalDate dob, int result, int berekenAantalDobbelsteen, int totaalScoreSpeler, ArrayList<Integer> eigenStapel, int berekenAantalWormen) {
+    public void spelerInArrayToevoegen(TextField txfNaam1, int aantal, LocalDate dob, int result, int berekenAantalDobbelsteen, int totaalScoreSpeler, ArrayList<Integer> eigenStapel, int berekenAantalWormen) {
 
         spelersArrayList.add(new Speler(txfNaam1, dob, result, berekenAantalDobbelsteen, totaalScoreSpeler, eigenStapel, berekenAantalWormen));
         //spelersList[aantal] = new Speler(txfNaam1, dob, result, berekenAantalDobbelsteen, totaalScoreSpeler, eigenStapel, berekenAantalWormen);

@@ -7,6 +7,7 @@ package gui;
 
 import domein.DomeinController;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -37,7 +38,7 @@ public class SpelOverzicht extends BorderPane{
     public int dbl = 0;
     public int dblValue = 0;
     public boolean worm = false;
-    public int berekenScore = 0;
+    //public int berekenScore = 0;
     private final Startscherm sts;
     private int wormenWinnaar;
     private String winnaar;
@@ -110,7 +111,6 @@ public class SpelOverzicht extends BorderPane{
             btnUpperTilesPlayers.add(btnUpperTileSpeler1);
             
             
-       
          
             
             gpRight.add(lblSpeler1, g, spelers);
@@ -134,6 +134,7 @@ public class SpelOverzicht extends BorderPane{
            
         
         
+        }
         
 
 //btns voor bovensteTegelsStapels----------------------------------------------
@@ -157,7 +158,12 @@ public class SpelOverzicht extends BorderPane{
 
        
         
-        }
+        
+        
+        
+        
+        
+        
         Label lblScoreCurrentPlayer = new Label(String.format("Score: %d", dc.berekenScore()));
             gpLeft.add(lblScoreCurrentPlayer, g, 1);
         
@@ -177,12 +183,12 @@ public class SpelOverzicht extends BorderPane{
         btnNieuwSpel.setId("btnNieuwSpel");
         btnNieuwSpel.setPrefSize(220, 50);
         
-        btnNieuwSpel.setOnAction(new EventHandler<ActionEvent>() {
+      /*  btnNieuwSpel.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent ae) {
                 btnNieuwSpelOnAction(ae);
             }
-        });
+        });*/
         
         
         
@@ -226,42 +232,42 @@ public class SpelOverzicht extends BorderPane{
         Button btnDice1 = new Button();
         btnDices.add(btnDice1);
         btnDice1.setDisable(true);
-        btnDice1.setId("btnDiceDisabled");
+        //btnDice1.setId("btnDiceDisabled");
         
         Button btnDice2 = new Button();
         btnDices.add(btnDice2);
         btnDice2.setDisable(true);
-        btnDice2.setId("btnDiceDisabled");
+       // btnDice2.setId("btnDiceDisabled");
         
         Button btnDice3 = new Button();
         btnDices.add(btnDice3);
         btnDice3.setDisable(true);
-        btnDice3.setId("btnDiceDisabled");
+       // btnDice3.setId("btnDiceDisabled");
         
         Button btnDice4 = new Button();
         btnDices.add(btnDice4);
         btnDice4.setDisable(true);
-        btnDice4.setId("btnDiceDisabled");
+       // btnDice4.setId("btnDiceDisabled");
         
         Button btnDice5 = new Button();
         btnDices.add(btnDice5);
         btnDice5.setDisable(true);
-        btnDice5.setId("btnDiceDisabled");
+       // btnDice5.setId("btnDiceDisabled");
         
         Button btnDice6 = new Button();
         btnDices.add(btnDice6);
         btnDice6.setDisable(true);
-        btnDice6.setId("btnDiceDisabled");
+       // btnDice6.setId("btnDiceDisabled");
         
         Button btnDice7 = new Button();
         btnDices.add(btnDice7);
         btnDice7.setDisable(true);
-        btnDice7.setId("btnDiceDisabled");
+      //  btnDice7.setId("btnDiceDisabled");
         
         Button btnDice8 = new Button();
         btnDices.add(btnDice8);
         btnDice8.setDisable(true);
-        btnDice8.setId("btnDiceDisabled");
+       // btnDice8.setId("btnDiceDisabled");
         
        
         
@@ -528,8 +534,8 @@ public class SpelOverzicht extends BorderPane{
         
 //btnsDblst----------------------------------------------------------
 
-
-        for(int l = 0; l < btnDices.size(); l++){
+/*
+       for(int l = 0; l < btnDices.size(); l++){
             btnDices.get(l).setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent ae) {
@@ -772,11 +778,11 @@ public class SpelOverzicht extends BorderPane{
                         dc.getGeworpen().clear();
                           
                      
-                        break;}*/
+                        break;}
                 }}
             );
         };
-
+*/
 
 //dice1
         
@@ -837,13 +843,13 @@ public class SpelOverzicht extends BorderPane{
                     IDdbl.setId(btnDice1.getId());                           // String IDdbl wordt gelyk gezet aan ID van deze button want in volgend blokje 
                                                                         // code zou het kunnen dat deze button ID met zichzelf wordt vergeleken en dan dus verkeerd wordt vergeleken
                     
-                 /*   for(int i = 0; i < btnDices.size(); i++){           // alle dobbelstenen die eenzelfde symbool hebben al dat je hebt 
+                    for(int i = 0; i < btnDices.size(); i++){           // alle dobbelstenen die eenzelfde symbool hebben al dat je hebt 
                         if(IDdbl.getId() == btnDices.get(i).getId()){               // genomen worden onzichtbaargezet en gedisabled want anders kan men ze nog nemen
                             btnDices.get(i).setDisable(true);               // En ook worden deze uit de arraylist van btnDices geremoved zodat ze by nieuwe "gooi" niet meer meedoen
                             btnDices.get(i).setId("btnDiceDisabled");
                             btnDices.remove(btnDices.get(i));
                         }
-                    }*/
+                    }
                     
                     if(dc.berekenAantalDobbelsteen() == 0){               // als dobbelstenen op zijn wordt gooi en stop op disabled gezet (tegel pakken en dan volgende zijn beurt)
                     btnGooi.setDisable(true); 
@@ -977,7 +983,7 @@ public class SpelOverzicht extends BorderPane{
                     btnGooi.setDisable(true);
                 }
                 
-                switch(dc.berekenAantalDobbelsteen()){
+               switch(dc.berekenAantalDobbelsteen()){
                         case 0: lblAantalDblOver.setId("lblAantalDblOver0");
                                 break;
                         case 1: lblAantalDblOver.setId("lblAantalDblOver1");
@@ -1000,13 +1006,13 @@ public class SpelOverzicht extends BorderPane{
                 
                 IDdbl.setId(btnDice2.getId()); 
                 
-               /* for(int i = 0; i < btnDices.size(); i++){
+                for(int i = 0; i < btnDices.size(); i++){
                     if(IDdbl.getId() == btnDices.get(i).getId()){
                         btnDices.get(i).setDisable(true);
                         btnDices.get(i).setId("btnDiceDisabled");
                         btnDices.remove(btnDices.get(i));
                     }
-                }*/
+                }
                 
                 if(dc.berekenAantalDobbelsteen() == 0){
                     btnGooi.setDisable(true);
@@ -1090,13 +1096,13 @@ public class SpelOverzicht extends BorderPane{
                 
                 IDdbl.setId(btnDice3.getId()); 
                 
-                /*for(int i = 0; i < btnDices.size(); i++){
+                for(int i = 0; i < btnDices.size(); i++){
                     if(IDdbl.getId() == btnDices.get(i).getId()){
                         btnDices.get(i).setDisable(true);
                         btnDices.get(i).setId("btnDiceDisabled");
                         btnDices.remove(btnDices.get(i));
                     }
-                }*/
+                }
                 
                 if(dc.berekenAantalDobbelsteen() == 0){
                     btnGooi.setDisable(true);
@@ -1153,7 +1159,7 @@ public class SpelOverzicht extends BorderPane{
                         btnStop.setDisable(false);
                     }
                 
-                switch(dc.berekenAantalDobbelsteen()){
+               switch(dc.berekenAantalDobbelsteen()){
                         case 0: lblAantalDblOver.setId("lblAantalDblOver0");
                                 break;
                         case 1: lblAantalDblOver.setId("lblAantalDblOver1");
@@ -1176,13 +1182,13 @@ public class SpelOverzicht extends BorderPane{
                 
                 IDdbl.setId(btnDice4.getId()); 
                 
-               /* for(int i = 0; i < btnDices.size(); i++){
+              for(int i = 0; i < btnDices.size(); i++){
                     if(IDdbl.getId() == btnDices.get(i).getId()){
                         btnDices.get(i).setDisable(true);
                         btnDices.get(i).setId("btnDiceDisabled");
                         btnDices.remove(btnDices.get(i));
                     }
-                }*/
+                }
                 
                 if(dc.berekenAantalDobbelsteen() == 0){
                     btnGooi.setDisable(true);
@@ -1261,13 +1267,13 @@ public class SpelOverzicht extends BorderPane{
                 
                 IDdbl.setId(btnDice5.getId()); 
                 
-               /* for(int i = 0; i < btnDices.size(); i++){
+               for(int i = 0; i < btnDices.size(); i++){
                     if(IDdbl.getId() == btnDices.get(i).getId()){
                         btnDices.get(i).setDisable(true);
                         btnDices.get(i).setId("btnDiceDisabled");
                         btnDices.remove(btnDices.get(i));
                     }
-                }*/
+                }
                 
                 if(dc.berekenAantalDobbelsteen() == 0){
                     btnGooi.setDisable(true);
@@ -1349,13 +1355,13 @@ public class SpelOverzicht extends BorderPane{
                 
                 IDdbl.setId(btnDice6.getId()); 
                 
-               /* for(int i = 0; i < btnDices.size(); i++){
+                for(int i = 0; i < btnDices.size(); i++){
                     if(IDdbl.getId() == btnDices.get(i).getId()){
                         btnDices.get(i).setDisable(true);
                         btnDices.get(i).setId("btnDiceDisabled");
                         btnDices.remove(btnDices.get(i));
                     }
-                }*/
+                }
                 if(dc.berekenAantalDobbelsteen() == 0){
                     btnGooi.setDisable(true);
                     btnStop.setDisable(true);
@@ -1414,7 +1420,7 @@ public class SpelOverzicht extends BorderPane{
                         btnStop.setDisable(false);
                     }
                 
-                switch(dc.berekenAantalDobbelsteen()){
+               switch(dc.berekenAantalDobbelsteen()){
                         case 0: lblAantalDblOver.setId("lblAantalDblOver0");
                                 break;
                         case 1: lblAantalDblOver.setId("lblAantalDblOver1");
@@ -1437,13 +1443,13 @@ public class SpelOverzicht extends BorderPane{
                 
                 IDdbl.setId(btnDice7.getId()); 
                 
-                /*for(int i = 0; i < btnDices.size(); i++){
+               for(int i = 0; i < btnDices.size(); i++){
                     if(IDdbl.getId() == btnDices.get(i).getId()){
                         btnDices.get(i).setDisable(true);
                         btnDices.get(i).setId("btnDiceDisabled");
                         btnDices.remove(btnDices.get(i));
                     }
-                }*/
+                }
                 
                 if(dc.berekenAantalDobbelsteen() == 0){
                     btnGooi.setDisable(true);
@@ -1500,7 +1506,7 @@ public class SpelOverzicht extends BorderPane{
                 btnStop.setDisable(false);
                 }
                 
-                switch(dc.berekenAantalDobbelsteen()){
+             switch(dc.berekenAantalDobbelsteen()){
                         case 0: lblAantalDblOver.setId("lblAantalDblOver0");
                                 break;
                         case 1: lblAantalDblOver.setId("lblAantalDblOver1");
@@ -1523,13 +1529,13 @@ public class SpelOverzicht extends BorderPane{
                 
                 IDdbl.setId(btnDice8.getId()); 
                 
-                /*for(int i = 0; i < btnDices.size(); i++){
+               for(int i = 0; i < btnDices.size(); i++){
                     if(IDdbl.getId() == btnDices.get(i).getId()){
                         btnDices.get(i).setDisable(true);
                         btnDices.get(i).setId("btnDiceDisabled");
                         btnDices.remove(btnDices.get(i));
                     }
-                }*/
+                }
                 
                 if(dc.berekenAantalDobbelsteen() == 0){
                     btnGooi.setDisable(true);
@@ -1554,6 +1560,7 @@ public class SpelOverzicht extends BorderPane{
                 
             }
         });
+        
         for(int k=0;k<btnDices.size();k++){
             if(IDdbl.getId()==btnDices.get(k).getId()){
                 btnDices.remove(btnDices.get(k));
@@ -1567,14 +1574,20 @@ public class SpelOverzicht extends BorderPane{
 //btns Gooi en Stop ----------------------------------
 
 //btnGooi
-
-
-        btnGooi.setOnAction(new EventHandler<ActionEvent>() {
+ 
+       
+             //  HBox dices=new HBox();
+             
+        /*btnGooi.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent ae) {
+             
+        
+                  
+           
                 dc.rolDobbelsteen();
                 
-                switch(dc.berekenAantalDobbelsteen()){
+              switch(dc.berekenAantalDobbelsteen()){
                         case 0: lblAantalDblOver.setId("lblAantalDblOver0");
                                 break;
                         case 1: lblAantalDblOver.setId("lblAantalDblOver1");
@@ -1595,9 +1608,9 @@ public class SpelOverzicht extends BorderPane{
                                 break;
                     }
                 
-               /* System.out.printf("%s",dc.getGeworpen().toString());
+            //System.out.printf("%s",dc.getGeworpen().toString());
                 
-                 for (int k = 1; k < 7; k++) {
+       /*          for (int k = 1; k < 7; k++) {
                     System.out.printf(" %n" + k + ": " + dc.getZijde()[k]);
                     
                 }
@@ -1619,8 +1632,8 @@ public class SpelOverzicht extends BorderPane{
                  System.out.printf("%n%nKies symbool gegooide dobbelsteen: ");
                 dc.setSymbool(input.nextInt());
                 
-                
-                 */ 
+                System.out.printf("%nAantal Dobbelstenen over: " + dc.berekenAantalDobbelsteen());
+                  
                   
                 //show berekenAantalDobbelsteen vanboven in wit vakje
                 
@@ -1628,7 +1641,7 @@ public class SpelOverzicht extends BorderPane{
              //AANTAL DOBBELSENEN WORDT OOK NEGATIEF NA ELK GOOI BEURT
             
              ////////////////////////////////////////////////////////////////////////////////////////////////////////
-             for(int b=0; b< dc.berekenAantalDobbelsteen(); b++){
+          for(int b=0; b< dc.berekenAantalDobbelsteen(); b++){
                 
                     switch(dc.getGeworpen().get(b)){
                         case 1: btnDices.get(b).setId("btnDice1");
@@ -1656,27 +1669,27 @@ public class SpelOverzicht extends BorderPane{
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(4)){
                                     btnDices.get(b).setDisable(true);
-                                  
+                                //break;  
                                 }
-                                break;
+                               break; 
                         case 5: btnDices.get(b).setId("btnDice5");
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(5)){
                                     btnDices.get(b).setDisable(true);
                                 
                                 }
-                                break;
+                               break;
                         case 6: btnDices.get(b).setId("btnDice6");
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(6)){
                                     btnDices.get(b).setDisable(true);
                                 
                                 }
-                                break;
+                               break;
                     }
                 }
-                
-System.out.printf("%nAantal Dobbelstenen over: " + dc.berekenAantalDobbelsteen());
+            
+                System.out.printf("%d",dc.berekenAantalDobbelsteen());
                 if(dc.getGekozen().containsAll(dc.getGeworpen())){
                     lblAantalDblOver.setId("lblAantalDblOver0");
                     btnGooi.setDisable(true);
@@ -1686,7 +1699,7 @@ System.out.printf("%nAantal Dobbelstenen over: " + dc.berekenAantalDobbelsteen()
         });
    
         btnGooi.setId("btnGooi");
-        btnGooi.setPrefSize(200, 50);  
+        btnGooi.setPrefSize(200, 50);  */
         
  //btnStop            
               
@@ -1721,16 +1734,16 @@ System.out.printf("%nAantal Dobbelstenen over: " + dc.berekenAantalDobbelsteen()
         lblAantalDblOver.setAlignment(Pos.BOTTOM_CENTER);
         lblOutputGame.setAlignment(Pos.CENTER_LEFT);
         info.getChildren().addAll(lblOutputGame, lblAantalDblOver, btnSaveAndQuit, btnNieuwSpel);
+        throwOrStop.getChildren().addAll(btnGooi, btnStop);
+                tileRow.getChildren().addAll(btnTegel21, btnTegel22, btnTegel23, btnTegel24, btnTegel25, btnTegel26, btnTegel27, btnTegel28, btnTegel29, btnTegel30, btnTegel31, btnTegel32, btnTegel33, btnTegel34, btnTegel35, btnTegel36);
+
         
+      
         
-        
-       // gpLeft.add(lblCurrentPlayer, 0, 0);
-       // gpLeft.add(lblScoreCurrentPlayer, 0, 1);
-        //gpLeft.add(/*dc.berekenScore(), 1, 1);
-        //gpLeft.add(btnUpperTileSpeler7, 0, 2); // bovensteTegel van de current player maar voorlopig gebruiken we dit als tijdelijke replacement
         
         bckgrndLeft.getChildren().addAll(gpLeft); // buttons random nummers geven en adhv die nummers id linken
-        gpCenter.add(btnDice1, 0, 0);
+      /*  gpCenter.add(btnDice1, 0, 0);
+        
         gpCenter.add(btnDice2, 1, 1);
         gpCenter.add(btnDice3, 2, 0);
         gpCenter.add(btnDice4, 3, 1);
@@ -1738,11 +1751,19 @@ System.out.printf("%nAantal Dobbelstenen over: " + dc.berekenAantalDobbelsteen()
         gpCenter.add(btnDice6, 0, 3);
         gpCenter.add(btnDice7, 2, 3);
         gpCenter.add(btnDice8, 4, 3);
+*/
         
        // gpCenter.getColumnConstraints().add(new ColumnConstraints(200));
         //gpCenter.getRowConstraints().add(new RowConstraints(300));
+         for(int i=0;i<btnDices.size();i++){
+                      
+                      
+                      gpCenter.add(btnDices.get(i),i,0);
+             
+       
         
-        throwOrStop.getChildren().addAll(btnGooi, btnStop);
+                       }
+        //throwOrStop.getChildren().addAll(btnGooi, btnStop);
         
         vboxMiddle.getChildren().addAll(gpCenter, throwOrStop);
         
@@ -1755,7 +1776,7 @@ System.out.printf("%nAantal Dobbelstenen over: " + dc.berekenAantalDobbelsteen()
         
         bckgrndRight.getChildren().addAll(gpRight);
         
-        tileRow.getChildren().addAll(btnTegel21, btnTegel22, btnTegel23, btnTegel24, btnTegel25, btnTegel26, btnTegel27, btnTegel28, btnTegel29, btnTegel30, btnTegel31, btnTegel32, btnTegel33, btnTegel34, btnTegel35, btnTegel36);
+        //tileRow.getChildren().addAll(btnTegel21, btnTegel22, btnTegel23, btnTegel24, btnTegel25, btnTegel26, btnTegel27, btnTegel28, btnTegel29, btnTegel30, btnTegel31, btnTegel32, btnTegel33, btnTegel34, btnTegel35, btnTegel36);
         
         tileRow.setSpacing(10);
         tileRow.setPadding(new Insets(5));
@@ -1805,7 +1826,7 @@ System.out.printf("%nAantal Dobbelstenen over: " + dc.berekenAantalDobbelsteen()
     
     
     
-    private void btnNieuwSpelOnAction(ActionEvent event)
+   /* private void btnNieuwSpelOnAction(ActionEvent event)
     {
         WinnaarScherm ws = new WinnaarScherm(sts, this, wormenWinnaar, winnaar, dc);
         Scene scene = new Scene(ws);
@@ -1819,10 +1840,13 @@ System.out.printf("%nAantal Dobbelstenen over: " + dc.berekenAantalDobbelsteen()
         stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 4);  
         
        
+    }*/
+
+    
     }
     
      
     
     
     
-}
+

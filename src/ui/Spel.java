@@ -973,7 +973,7 @@ public class Spel{
              
            
         }
-            //naamspeler is gewijzigd ,aantal is verwijderd,date is gewijzigd
+           // naamspeler is gewijzigd ,aantal is verwijderd,date is gewijzigd
             
           // dc.spelerInArrayToevoegen(naamSpeler,aantal,date,result,berekenAantalDobbelsteen,totaalScoreSpeler,eigenStapel, aantalWormen);
       } while (waar == true);

@@ -24,17 +24,17 @@ import javafx.stage.Stage;
 public class WinnaarScherm extends BorderPane {
 
     private final DomeinController dc;
-    private final SpelOverzicht so;
+    private final Tafel tafel;
+    
     private final Startscherm sts;
     private int wormenWinnaar;
     private String winnaar;
 
-    public WinnaarScherm(Startscherm sts, SpelOverzicht so, int wormenWinnaar, String winnaar, DomeinController dc) // login???
+    public WinnaarScherm(Startscherm sts, Tafel tafel, DomeinController dc) // login???
     {
-        this.wormenWinnaar = wormenWinnaar;
-        this.winnaar = winnaar;
+       
         this.sts = sts;
-        this.so = so;
+        this.tafel=tafel;
         this.dc = dc;
         buildGui();
     }
@@ -95,8 +95,8 @@ public class WinnaarScherm extends BorderPane {
     }
 
     private void btnOpnieuwSpelenOnAction(ActionEvent event) {
-        SpelOverzicht so = new SpelOverzicht(sts, dc);
-        Scene scene = new Scene(so);
+        Tafel tafel=new Tafel(sts, dc);
+        Scene scene = new Scene(tafel);
         Stage stage = (Stage) this.getScene().getWindow();
         stage.setScene(scene);
 

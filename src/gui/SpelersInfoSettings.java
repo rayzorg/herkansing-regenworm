@@ -69,7 +69,7 @@ public class SpelersInfoSettings extends BorderPane{
         
 //Labels ***********************************************************************        
         
-       Label lblSpelers = new Label("Spelers");
+        Label lblSpelers = new Label("Spelers");
         lblSpelers.setId("lblSpelers");
 
         Button btnNext = new Button();
@@ -94,8 +94,15 @@ public class SpelersInfoSettings extends BorderPane{
             Label lblSpeler1Naam = new Label(String.format("naam speler %d", aantal + 1));//naam1
 
             lblSpeler1Naam.setId("speler");
+            
+            
+            
+            
+           
 
             TextField txfNaam1 = new TextField();
+            
+           // String naamSpeler=txfNaam1.getText();
 
             Label lblSpeler1Gbd = new Label(String.format("geboortedatum")); //gbd1
             Label lblSpeler1Gbd2 = new Label(String.format("geboortedatum")); //gbd1
@@ -190,8 +197,8 @@ public class SpelersInfoSettings extends BorderPane{
     
     private void btnNextOnAction(ActionEvent event)
     {
-        SpelOverzicht so = new SpelOverzicht(sts, dc);
-        Scene scene = new Scene(so);
+       Tafel tafel = new Tafel(sts, dc);
+        Scene scene = new Scene(tafel);
         
         Stage stage = (Stage) this.getScene().getWindow();
         stage.setScene(scene);
