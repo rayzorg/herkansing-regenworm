@@ -1578,7 +1578,7 @@ public class SpelOverzicht extends BorderPane{
        
              //  HBox dices=new HBox();
              
-        /*btnGooi.setOnAction(new EventHandler<ActionEvent>() {
+        btnGooi.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent ae) {
              
@@ -1610,7 +1610,7 @@ public class SpelOverzicht extends BorderPane{
                 
             //System.out.printf("%s",dc.getGeworpen().toString());
                 
-       /*          for (int k = 1; k < 7; k++) {
+               for (int k = 1; k < 7; k++) {
                     System.out.printf(" %n" + k + ": " + dc.getZijde()[k]);
                     
                 }
@@ -1699,7 +1699,7 @@ public class SpelOverzicht extends BorderPane{
         });
    
         btnGooi.setId("btnGooi");
-        btnGooi.setPrefSize(200, 50);  */
+        btnGooi.setPrefSize(200, 50);  
         
  //btnStop            
               

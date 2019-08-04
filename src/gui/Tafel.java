@@ -120,6 +120,15 @@ public class Tafel extends BorderPane {
         btnGooi.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
+                dc.rolDobbelsteen();
+                
+                for(int i=0;i<btnDices.size();i++){
+                    btnDices.get(i).setDisable(false);
+                    
+                    
+                    
+                    
+                }
                 
             }
             
@@ -155,7 +164,7 @@ public class Tafel extends BorderPane {
        aanmaakTegels();
        disableTegels();
        aanmaakDobbelstenen();
-       disableDobbelstenen();
+       //disableDobbelstenen();
        
         btnSaveAndQuit.setAlignment(Pos.CENTER_RIGHT);
         lblAantalDblOver.setAlignment(Pos.BOTTOM_CENTER);
@@ -242,7 +251,7 @@ public class Tafel extends BorderPane {
             tegels.get(indexTegels).setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent ae) {
-               // btnTegel21OnAction(ae);
+                 
             }
         });
         
@@ -269,20 +278,27 @@ public class Tafel extends BorderPane {
      }
  }
  private void aanmaakDobbelstenen(){
-     btnDices=new ArrayList<Button>();
-     for(int indexDobbelstenen=0;indexDobbelstenen<dobbelstenenAantal;indexDobbelstenen++){
+     btnDices=new ArrayList<>();
+     //int waarde=indexDobbelstenen+1;
+     int  indexDobbelstenen;
+     for( indexDobbelstenen=0;indexDobbelstenen<dobbelstenenAantal;indexDobbelstenen++){
+          int waarde=indexDobbelstenen+1;
                 btnDices.add(new Button());
-                
-               btnDices.get(indexDobbelstenen).setId("btnDice"+(indexDobbelstenen+1));
                
-               btnDices.get(indexDobbelstenen).setOnAction(new EventHandler<ActionEvent>() {
+               btnDices.get(indexDobbelstenen).setId("btnDice"+(waarde));
+              if(btnDices.get(indexDobbelstenen).getId().equals("btnDice"+(waarde))){
+                        dc.setSymbool(waarde);
+                    }
+            
+              btnDices.get(indexDobbelstenen).setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent ae) {
-               // btnTegel21OnAction(ae);
+             dc.rolDobbelsteen();
+               //klopt System.out.printf("%n%d",waarde);
+               //klopt System.out.printf("%n%d",dc.berekenScore());
             }
         });
-        
-       
+      
        btnDices.get(indexDobbelstenen).setPrefSize(100, 130);
         
      }
@@ -291,8 +307,9 @@ public class Tafel extends BorderPane {
             BackgroundSize bs = new BackgroundSize(50, 50, false, false, false, true);
             BackgroundImage b = new BackgroundImage(db, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, bs);
             btnDices.get(indexTegels).setBackground(new Background(b));
-*/
+*/      
             System.out.printf("%d",btnDices.size());
+            
  }
  private void disableDobbelstenen(){
      for(int indexTegels=0;indexTegels<btnDices.size();indexTegels++){
