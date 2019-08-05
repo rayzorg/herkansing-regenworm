@@ -125,19 +125,16 @@ public class Tafel extends BorderPane {
         btnGooi.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-                 //worp=(int)(6*Math.random() + 1);
-                 
                
-                //btnDices.get(worp).setDisable(false);*/
                 dc.rolDobbelsteen();
                 //System.out.printf("%d",Integer.parseInt(btnDices.get(b).getId()));
                 
                 for(int b=0; b< btnDices.size(); b++){
                    
                  worp=(int)(6*Math.random() + 1);
-                    switch(dc.getGeworpen().get(b)){
+                    switch(worp){
                         case 1: btnDices.get(b).setId(""+(worp));
-                       dc.setSymbool(worp);
+                       dc.setSymbool(1);
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(1)){
                                     btnDices.get(b).setDisable(true);
@@ -145,7 +142,7 @@ public class Tafel extends BorderPane {
                                 }
                                 break;
                         case 2: btnDices.get(b).setId(""+(worp));
-                        dc.setSymbool(worp);
+                        dc.setSymbool(2);
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(2)){
                                     btnDices.get(b).setDisable(true);
@@ -153,7 +150,7 @@ public class Tafel extends BorderPane {
                                 }
                                 break;
                         case 3: btnDices.get(b).setId(""+(worp));
-                       dc.setSymbool(worp);
+                       dc.setSymbool(3);
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(3)){
                                     btnDices.get(b).setDisable(true);
@@ -161,7 +158,7 @@ public class Tafel extends BorderPane {
                                 }
                                 break;
                         case 4: btnDices.get(b).setId(""+(worp));
-                      dc.setSymbool(worp);
+                      dc.setSymbool(4);
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(4)){
                                     btnDices.get(b).setDisable(true);
@@ -169,7 +166,7 @@ public class Tafel extends BorderPane {
                                 }
                                break; 
                         case 5: btnDices.get(b).setId(""+(worp));
-                        dc.setSymbool(worp);
+                        dc.setSymbool(5);
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(5)){
                                     btnDices.get(b).setDisable(true);
@@ -177,7 +174,7 @@ public class Tafel extends BorderPane {
                                 }
                                break;
                         case 6: btnDices.get(b).setId(""+(worp));
-                        dc.setSymbool(worp);
+                        dc.setSymbool(6);
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(6)){
                                     btnDices.get(b).setDisable(true);
@@ -234,6 +231,7 @@ public class Tafel extends BorderPane {
                 System.out.println("hello");
               //  System.out.printf("%d",Integer.parseInt(btnDices.get(z).getId()));
                 System.out.printf("%n%d",dc.getSymbool());
+               
             }
         });
                   
