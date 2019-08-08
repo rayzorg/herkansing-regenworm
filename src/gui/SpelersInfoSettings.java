@@ -19,6 +19,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DateCell;
@@ -136,11 +138,25 @@ public class SpelersInfoSettings extends BorderPane{
             btnNext.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    boolean waar;
+                    
+                    if(txfNaam1.getText().trim().equals("")){
+                       
 
+                      Alert fail= new Alert(AlertType.INFORMATION);
+        fail.setHeaderText("LEEG");
+        fail.setContentText("Je moet een naam invoeren en een datum kiezen!");
+        
+        fail.showAndWait();
+        //btnNext.setDisable(true);
+                    }
+                    
+                    
+                    if(!txfNaam1.getText().trim().equals("")) {  
                     geefSpelersVoor();
                     btnNextOnAction( event);
-                }
+                        
+                    }
+            }
             });
             btnNext.setId("btnNext");
             btnNext.setPrefSize(100, 100);
