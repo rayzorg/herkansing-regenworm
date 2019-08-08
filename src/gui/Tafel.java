@@ -5,10 +5,12 @@ import domein.DomeinController;
 import java.util.ArrayList;
 import java.util.Random;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -129,52 +131,72 @@ public class Tafel extends BorderPane {
                 dc.rolDobbelsteen();
                 //System.out.printf("%d",Integer.parseInt(btnDices.get(b).getId()));
                 
-                for(int b=0; b< btnDices.size(); b++){
+                for(int b=0; b< dobbelstenenAantal; b++){
                    
-                 worp=(int)(6*Math.random() + 1);
-                    switch(worp){
-                        case 1: btnDices.get(b).setId(""+(worp));
-                       dc.setSymbool(1);
+                     worp=(int)(6*Math.random() + 1);
+                     btnDices.get(b).setId(""+ worp);
+                    switch(dc.getGeworpen().get(worp)){
+                        
+                        case 1: //btnDices.get(b).setId(""+(worp));
+                      if(btnDices.get(b).getId().equals(""+(worp))){
+                       dc.setSymbool(Integer.parseInt(btnDices.get(b).getId()));
+                     
+                    }
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(1)){
                                     btnDices.get(b).setDisable(true);
                                     
                                 }
                                 break;
-                        case 2: btnDices.get(b).setId(""+(worp));
-                        dc.setSymbool(2);
+                        case 2: //btnDices.get(b).setId(""+(worp));
+                       if(btnDices.get(b).getId().equals(""+worp)){
+                       dc.setSymbool(Integer.parseInt(btnDices.get(b).getId()));
+                     
+                    }
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(2)){
                                     btnDices.get(b).setDisable(true);
                                     
                                 }
                                 break;
-                        case 3: btnDices.get(b).setId(""+(worp));
-                       dc.setSymbool(3);
+                        case 3:// btnDices.get(b).setId(""+(worp));
+                       if(btnDices.get(b).getId().equals(""+(worp))){
+                       dc.setSymbool(Integer.parseInt(btnDices.get(b).getId()));
+                     
+                    }
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(3)){
                                     btnDices.get(b).setDisable(true);
                                     
                                 }
                                 break;
-                        case 4: btnDices.get(b).setId(""+(worp));
-                      dc.setSymbool(4);
+                        case 4: //btnDices.get(b).setId(""+(worp));
+                      if(btnDices.get(b).getId().equals(""+(worp))){
+                       dc.setSymbool(Integer.parseInt(btnDices.get(b).getId()));
+                     
+                    }
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(4)){
                                     btnDices.get(b).setDisable(true);
                                 break;  
                                 }
                                break; 
-                        case 5: btnDices.get(b).setId(""+(worp));
-                        dc.setSymbool(5);
+                        case 5: //btnDices.get(b).setId(""+(worp));
+                        if(btnDices.get(b).getId().equals(""+(worp))){
+                       dc.setSymbool(Integer.parseInt(btnDices.get(b).getId()));
+                     
+                    }
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(5)){
                                     btnDices.get(b).setDisable(true);
                                 
                                 }
                                break;
-                        case 6: btnDices.get(b).setId(""+(worp));
-                        dc.setSymbool(6);
+                        case 6: //btnDices.get(b).setId(""+(worp));
+                        if(btnDices.get(b).getId().equals(""+(worp))){
+                       dc.setSymbool(Integer.parseInt(btnDices.get(b).getId()));
+                     
+                    }
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(6)){
                                     btnDices.get(b).setDisable(true);
@@ -185,6 +207,9 @@ public class Tafel extends BorderPane {
                     System.out.printf("%n%d",Integer.parseInt(btnDices.get(b).getId()));
                 }
                 
+               // System.out.printf("%n%d",Integer.parseInt(btnDices.get(4).getId()));
+              
+                dc.getGeworpen().clear();
             }
             
         });
@@ -221,19 +246,17 @@ public class Tafel extends BorderPane {
        aanmaakDobbelstenen();
        disableDobbelstenen();
        
+       
+       
        for( int z=0;z<btnDices.size();z++){
+          
+                    btnDices.get(z).setOnAction(e -> {
+                        
+                        Node source= (Node) e.getSource();
+                        System.out.printf("%s",source.getId());
+                    }) ;
            
-                    
-                    
-                    btnDices.get(z).setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent ae) {
-                System.out.println("hello");
-              //  System.out.printf("%d",Integer.parseInt(btnDices.get(z).getId()));
-                System.out.printf("%n%d",dc.getSymbool());
-               
-            }
-        });
+        
                   
                 }
        
