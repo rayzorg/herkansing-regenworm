@@ -85,7 +85,7 @@ public class Tafel extends BorderPane {
         
         for (int spelers = 0; spelers < dc.getSpelersArrayList().size(); spelers++) {
             
-            String naam=dc.getSpelersArrayList().get(spelers).getTxfNaam1().getText();
+            //String naam=dc.getSpelersArrayList().get(spelers).getTxfNaam1().getText();
             Label lblCurrentPlayer = new Label(String.format("huidige speler : %n %s",dc.getSpelersArrayList().get(spelers).getTxfNaam1().getText())); // voor in Leftgp te zetten
             gpLeft.add(lblCurrentPlayer, g, 0);
             
@@ -122,67 +122,56 @@ public class Tafel extends BorderPane {
         btnStop.setDisable(true);
         
         Button btnGooi = new Button();
-       Random rand=new Random();
        
         btnGooi.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
                
                 dc.rolDobbelsteen();
-                //System.out.printf("%d",Integer.parseInt(btnDices.get(b).getId()));
-                
+              
                 for(int b=0; b< btnDices.size(); b++){
                    
-                     worp=(int)(6*Math.random() + 1);
+                     
                      btnDices.get(b).setId(""+dc.getGeworpen().get(b));
-                        //Node source= (Node) ;
-                        
-                       // System.out.printf("%n%s",source.getId());
-                        //dc.setSymbool(Integer.parseInt(source.getId()));
+                       
                     switch(dc.getGeworpen().get(b)){
                         
-                        case 1: //btnDices.get(b).setId(""+(worp));
-                     // dc.setSymbool(Integer.parseInt(source.getId()));
+                        case 1: 
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(1)){
                                     btnDices.get(b).setDisable(true);
                                     
                                 }
                                 break;
-                        case 2: //btnDices.get(b).setId(""+(worp));
-                       //dc.setSymbool(Integer.parseInt(source.getId()));
+                        case 2: 
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(2)){
                                     btnDices.get(b).setDisable(true);
                                     
                                 }
                                 break;
-                        case 3:// btnDices.get(b).setId(""+(worp));
-                       //dc.setSymbool(Integer.parseInt(source.getId()));
+                        case 3:
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(3)){
                                     btnDices.get(b).setDisable(true);
                                     
                                 }
                                 break;
-                        case 4: //btnDices.get(b).setId(""+(worp));
-                       //dc.setSymbool(Integer.parseInt(source.getId()));
+                        case 4: 
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(4)){
                                     btnDices.get(b).setDisable(true);
                                 break;  
                                 }
                                break; 
-                        case 5: //btnDices.get(b).setId(""+(worp));
-                       // dc.setSymbool(Integer.parseInt(source.getId()));
+                        case 5: 
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(5)){
                                     btnDices.get(b).setDisable(true);
                                 
                                 }
                                break;
-                        case 6: //btnDices.get(b).setId(""+(worp));
-                        // dc.setSymbool(Integer.parseInt(source.getId()));
+                        case 6: 
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(6)){
                                     btnDices.get(b).setDisable(true);
@@ -246,12 +235,10 @@ public class Tafel extends BorderPane {
                         dc.getGekozen().add(Integer.parseInt(source.getId()));
                         
                         System.out.printf("%n de score is :%d",dc.berekenScore());
-                       // btnDices.get(dc.getGekozen().get(Integer.parseInt(source.getId()))).setDisable(true);
-                        
+                       
+                        System.out.printf("%n aantal dobbelstenen over : %d", dc.berekenAantalDobbelsteen());
                     }) ;
            
-        
-                  
                 }
        
         btnSaveAndQuit.setAlignment(Pos.CENTER_RIGHT);
@@ -327,15 +314,7 @@ public class Tafel extends BorderPane {
               
                 tegels.add(new Button());
                 tegels.get(indexTegels).setId("btnTegel"+ (indexTegels+21));
-               
-               Image db = new Image(getClass().getResourceAsStream("/img/Tile"+(indexTegels+21)+".png"));
-               BackgroundSize bs = new BackgroundSize(50, 50, false, false, false, true);
-               BackgroundImage b = new BackgroundImage(db, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, bs);
-               tegels.get(indexTegels).setBackground(new Background(b));
                 
-              //image werkt enkel als ik met css bestand doet en niet via backgroundimage
-              
-               
             tegels.get(indexTegels).setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent ae) {
@@ -357,42 +336,28 @@ public class Tafel extends BorderPane {
                 });
         
             }
-          System.out.printf("%d",tegels.size());
-          
+         
         }
  private void disableTegels(){
      for(int indexTegels=0;indexTegels<tegels.size();indexTegels++){
          tegels.get(indexTegels).setDisable(true);
      }
  }
- 
  private void aanmaakDobbelstenen(){
      btnDices=new ArrayList<>();
-               
-                
-     //int waarde=indexDobbelstenen+1;
+    
      int  indexDobbelstenen=0;
-     int waarde=indexDobbelstenen+1;
-     
      
      for( indexDobbelstenen=0;indexDobbelstenen<dobbelstenenAantal;indexDobbelstenen++){
-         waarde=indexDobbelstenen+1;
-        // worp=(int)(6*Math.random() + 1);
+         
+       
                btnDices.add(new Button());
                
-              // btnDices.get(indexDobbelstenen).setId(""+(worp));
-             // if(btnDices.get(indexDobbelstenen).getId().equals(""+(worp))){
-                     //   dc.setSymbool(Integer.parseInt(btnDices.get(indexDobbelstenen).getId()));
-                       // System.out.printf("%n%d",worp);
-                      
-                   // }
-            
-              
-      
+             
        btnDices.get(indexDobbelstenen).setPrefSize(100, 130);
        
        Button dobbelsteen = btnDices.get(indexDobbelstenen);
-         btnDices.get(indexDobbelstenen).addEventHandler(MouseEvent.MOUSE_ENTERED, (MouseEvent e) -> {
+            btnDices.get(indexDobbelstenen).addEventHandler(MouseEvent.MOUSE_ENTERED, (MouseEvent e) -> {
                 dobbelsteen.setEffect(shadow);
             });
 
@@ -402,13 +367,7 @@ public class Tafel extends BorderPane {
             });
      }
       
-          /*  Image db = new Image(getClass().getResourceAsStream("/img/Dice"+(indexTegels+1)+".png"));
-            BackgroundSize bs = new BackgroundSize(50, 50, false, false, false, true);
-            BackgroundImage b = new BackgroundImage(db, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, bs);
-            btnDices.get(indexTegels).setBackground(new Background(b));
-*/      
-           
-            
+         
  }
  private void disableDobbelstenen(){
      for(int indexTegels=0;indexTegels<btnDices.size();indexTegels++){
