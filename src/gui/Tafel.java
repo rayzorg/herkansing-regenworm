@@ -241,11 +241,11 @@ public class Tafel extends BorderPane {
                         Node source= (Node) e.getSource();
                        
                         dc.setSymbool(Integer.parseInt(source.getId()));
-                        System.out.printf("%nsymbool is : %d",dc.getSymbool());
+                        System.out.printf("%n symbool is : %d",dc.getSymbool());
                         
                         dc.getGekozen().add(Integer.parseInt(source.getId()));
                         
-                       // System.out.printf("%d",dc.berekenScore());
+                        System.out.printf("%n de score is :%d",dc.berekenScore());
                        // btnDices.get(dc.getGekozen().get(Integer.parseInt(source.getId()))).setDisable(true);
                         
                     }) ;
