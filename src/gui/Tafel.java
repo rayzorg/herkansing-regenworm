@@ -126,7 +126,7 @@ public class Tafel extends BorderPane {
         btnGooi.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-               
+                
                 dc.rolDobbelsteen();
               
                 for(int b=0; b< btnDices.size(); b++){
@@ -154,14 +154,14 @@ public class Tafel extends BorderPane {
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(3)){
                                     btnDices.get(b).setDisable(true);
-                                    
+                                   
                                 }
                                 break;
                         case 4: 
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(4)){
                                     btnDices.get(b).setDisable(true);
-                                break;  
+                                
                                 }
                                break; 
                         case 5: 
@@ -181,10 +181,9 @@ public class Tafel extends BorderPane {
                     }
                     
                 }
-                
-               // System.out.printf("%n%d",Integer.parseInt(btnDices.get(4).getId()));
-              
+               
                 dc.getGeworpen().clear();
+                System.out.printf(" #dobbels is: %d",dc.berekenAantalDobbelsteen());
             }
             
         });
@@ -232,11 +231,11 @@ public class Tafel extends BorderPane {
                         dc.setSymbool(Integer.parseInt(source.getId()));
                         System.out.printf("%n symbool is : %d",dc.getSymbool());
                         
-                        dc.getGekozen().add(Integer.parseInt(source.getId()));
-                        
+                        //dc.getGekozen().add(Integer.parseInt(source.getId()));
+                        dc.getGekozen().add(dc.getSymbool());
                         System.out.printf("%n de score is :%d",dc.berekenScore());
                        
-                        System.out.printf("%n aantal dobbelstenen over : %d", dc.berekenAantalDobbelsteen());
+                        
                     }) ;
            
                 }

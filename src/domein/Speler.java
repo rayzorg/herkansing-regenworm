@@ -146,6 +146,8 @@ public void resetScores(){
     public int berekenAantalDobbelsteen() {
         
         berekenAantalDobbelsteen = berekenAantalDobbelsteen - zijde[symbool];
+        
+       
         return berekenAantalDobbelsteen;
     }
     
@@ -171,6 +173,7 @@ public void resetScores(){
 
     
     public int berekenScore(){
+        
         if (symbool < 6){
             totaalScoreSpeler += symbool * zijde[symbool];
         }
@@ -183,6 +186,7 @@ public void resetScores(){
         zijde = new int[7];
         
         return totaalScoreSpeler;
+        
     }
 
     
