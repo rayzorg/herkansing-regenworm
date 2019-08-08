@@ -131,17 +131,18 @@ public class Tafel extends BorderPane {
                 dc.rolDobbelsteen();
                 //System.out.printf("%d",Integer.parseInt(btnDices.get(b).getId()));
                 
-                for(int b=0; b< dobbelstenenAantal; b++){
+                for(int b=0; b< btnDices.size(); b++){
                    
                      worp=(int)(6*Math.random() + 1);
-                     btnDices.get(b).setId(""+ worp);
-                    switch(dc.getGeworpen().get(worp)){
+                     btnDices.get(b).setId(""+dc.getGeworpen().get(b));
+                        //Node source= (Node) ;
+                        
+                       // System.out.printf("%n%s",source.getId());
+                        //dc.setSymbool(Integer.parseInt(source.getId()));
+                    switch(dc.getGeworpen().get(b)){
                         
                         case 1: //btnDices.get(b).setId(""+(worp));
-                      if(btnDices.get(b).getId().equals(""+(worp))){
-                       dc.setSymbool(Integer.parseInt(btnDices.get(b).getId()));
-                     
-                    }
+                     // dc.setSymbool(Integer.parseInt(source.getId()));
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(1)){
                                     btnDices.get(b).setDisable(true);
@@ -149,10 +150,7 @@ public class Tafel extends BorderPane {
                                 }
                                 break;
                         case 2: //btnDices.get(b).setId(""+(worp));
-                       if(btnDices.get(b).getId().equals(""+worp)){
-                       dc.setSymbool(Integer.parseInt(btnDices.get(b).getId()));
-                     
-                    }
+                       //dc.setSymbool(Integer.parseInt(source.getId()));
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(2)){
                                     btnDices.get(b).setDisable(true);
@@ -160,10 +158,7 @@ public class Tafel extends BorderPane {
                                 }
                                 break;
                         case 3:// btnDices.get(b).setId(""+(worp));
-                       if(btnDices.get(b).getId().equals(""+(worp))){
-                       dc.setSymbool(Integer.parseInt(btnDices.get(b).getId()));
-                     
-                    }
+                       //dc.setSymbool(Integer.parseInt(source.getId()));
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(3)){
                                     btnDices.get(b).setDisable(true);
@@ -171,10 +166,7 @@ public class Tafel extends BorderPane {
                                 }
                                 break;
                         case 4: //btnDices.get(b).setId(""+(worp));
-                      if(btnDices.get(b).getId().equals(""+(worp))){
-                       dc.setSymbool(Integer.parseInt(btnDices.get(b).getId()));
-                     
-                    }
+                       //dc.setSymbool(Integer.parseInt(source.getId()));
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(4)){
                                     btnDices.get(b).setDisable(true);
@@ -182,10 +174,7 @@ public class Tafel extends BorderPane {
                                 }
                                break; 
                         case 5: //btnDices.get(b).setId(""+(worp));
-                        if(btnDices.get(b).getId().equals(""+(worp))){
-                       dc.setSymbool(Integer.parseInt(btnDices.get(b).getId()));
-                     
-                    }
+                       // dc.setSymbool(Integer.parseInt(source.getId()));
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(5)){
                                     btnDices.get(b).setDisable(true);
@@ -193,10 +182,7 @@ public class Tafel extends BorderPane {
                                 }
                                break;
                         case 6: //btnDices.get(b).setId(""+(worp));
-                        if(btnDices.get(b).getId().equals(""+(worp))){
-                       dc.setSymbool(Integer.parseInt(btnDices.get(b).getId()));
-                     
-                    }
+                        // dc.setSymbool(Integer.parseInt(source.getId()));
                                 btnDices.get(b).setDisable(false);
                                 if(dc.getGekozen().contains(6)){
                                     btnDices.get(b).setDisable(true);
@@ -204,7 +190,7 @@ public class Tafel extends BorderPane {
                                 }
                                break;
                     }
-                    System.out.printf("%n%d",Integer.parseInt(btnDices.get(b).getId()));
+                    
                 }
                 
                // System.out.printf("%n%d",Integer.parseInt(btnDices.get(4).getId()));
@@ -253,10 +239,15 @@ public class Tafel extends BorderPane {
                     btnDices.get(z).setOnAction(e -> {
                         
                         Node source= (Node) e.getSource();
-                        System.out.printf("%n%s",source.getId());
+                       
                         dc.setSymbool(Integer.parseInt(source.getId()));
-                        System.out.printf("%n%d",dc.getSymbool());
-                        System.out.printf("%d",dc.berekenScore());
+                        System.out.printf("%nsymbool is : %d",dc.getSymbool());
+                        
+                        dc.getGekozen().add(Integer.parseInt(source.getId()));
+                        
+                       // System.out.printf("%d",dc.berekenScore());
+                       // btnDices.get(dc.getGekozen().get(Integer.parseInt(source.getId()))).setDisable(true);
+                        
                     }) ;
            
         
