@@ -256,6 +256,7 @@ public class Tafel extends BorderPane {
                         System.out.printf("%n%s",source.getId());
                         dc.setSymbool(Integer.parseInt(source.getId()));
                         System.out.printf("%n%d",dc.getSymbool());
+                        System.out.printf("%d",dc.berekenScore());
                     }) ;
            
         
