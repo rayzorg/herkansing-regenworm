@@ -253,7 +253,9 @@ public class Tafel extends BorderPane {
                     btnDices.get(z).setOnAction(e -> {
                         
                         Node source= (Node) e.getSource();
-                        System.out.printf("%s",source.getId());
+                        System.out.printf("%n%s",source.getId());
+                        dc.setSymbool(Integer.parseInt(source.getId()));
+                        System.out.printf("%n%d",dc.getSymbool());
                     }) ;
            
         
