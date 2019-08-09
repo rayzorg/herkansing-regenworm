@@ -3,7 +3,9 @@ package gui;
 
 import domein.DomeinController;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
+import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -12,6 +14,7 @@ import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -39,6 +42,7 @@ public class Tafel extends BorderPane {
     private final int aantalTegels=16;
     private ArrayList<Button> tegels;
     private ArrayList <Button> btnDices;
+    private ArrayList<Integer> idDobbels;
     private final int dobbelstenenAantal=8;
     private DropShadow shadow = new DropShadow();
     private int worp;
@@ -180,10 +184,9 @@ public class Tafel extends BorderPane {
                                break;
                     }
                     
+                    
                 }
-               
-               // dc.getGeworpen().clear();
-                
+              
             }
             
         });
@@ -227,16 +230,44 @@ public class Tafel extends BorderPane {
                     btnDices.get(z).setOnAction(e -> {
                         
                         Node source= (Node) e.getSource();
+                       // idDobbels=btnDices.stream().map(Button::getId).collect(Collectors.toList());
+                     idDobbels=new ArrayList<Integer>(btnDices.size());
+                        for(int i=0;i<btnDices.size();i++){
                        
-                        dc.setSymbool(Integer.parseInt(source.getId()));
+                          idDobbels.add(Integer.parseInt(btnDices.get(i).getId()));
+                          
+                       }
+                   
+                        //dc.setSymbool(Integer.parseInt(source.getId()));
+                        //System.out.printf("%n symbool is : %d",dc.getSymbool());
+                        
+                       dc.setSymbool(Integer.parseInt(source.getId()));
+                
+                    if(dc.getGekozen().contains(dc.getSymbool()) ){
+                        Alert fail= new Alert(Alert.AlertType.INFORMATION);
+        fail.setHeaderText("KAN NIET");
+        fail.setContentText("je hebt deze dobbelsteen al gepakt!");
+        
+        fail.showAndWait();
+                        
+                    }
+                    else {
+                       // dc.setSymbool(Integer.parseInt(source.getId()));
                         System.out.printf("%n symbool is : %d",dc.getSymbool());
-                        
-                        //dc.getGekozen().add(Integer.parseInt(source.getId()));
                         dc.getGekozen().add(dc.getSymbool());
-                        System.out.printf("%n de score is :%d",dc.berekenScore());
                         
-                     
-                        System.out.printf(" #dobbels is: %d",dc.berekenAantalDobbelsteen());
+                      
+                    } 
+                System.out.printf("%n de score is :%d",dc.berekenScore());
+                        System.out.printf(" %n #dobbels is: %d",dc.berekenAantalDobbelsteen());
+                       // System.out.printf("%n de score is :%d",dc.berekenScore());
+                       // System.out.printf(" %n #dobbels is: %d",dc.berekenAantalDobbelsteen());
+                      // int aantal=Collections.frequency(idDobbels, Integer.parseInt(source.getId()));
+                        
+                      //int nieuwSize=btnDices.size()-aantal;
+                        //System.out.printf("%n de size is %d",nieuwSize);
+                        
+                       
                     }) ;
            
                 }

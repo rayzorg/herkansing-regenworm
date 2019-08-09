@@ -150,13 +150,17 @@ public class SpelersInfoSettings extends BorderPane{
         //btnNext.setDisable(true);
                     }
                     
-                    
+                    try{
                     if(!txfNaam1.getText().trim().equals("") || datePicker.valueProperty().getValue().toString().trim().equals("")) {  
                     geefSpelersVoor();
                     btnNextOnAction( event);
                         
                     }
+            }catch(NullPointerException e){
+                
             }
+                }
+                    
             });
             btnNext.setId("btnNext");
             btnNext.setPrefSize(100, 100);
