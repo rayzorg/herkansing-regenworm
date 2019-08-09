@@ -134,65 +134,50 @@ public class Tafel extends BorderPane {
                 dc.rolDobbelsteen();
               
                 for(int b=0; b< btnDices.size(); b++){
-                   
+                  
                      
-                     btnDices.get(b).setId(""+dc.getGeworpen().get(b));
                        
                     switch(dc.getGeworpen().get(b)){
                         
                         case 1: 
+                            btnDices.get(b).setId(""+dc.getGeworpen().get(b));
                                 btnDices.get(b).setDisable(false);
-                                if(dc.getGekozen().contains(1)){
-                                    btnDices.get(b).setDisable(true);
-                                    
-                                }
+                               
                                 break;
-                        case 2: 
+                        case 2: btnDices.get(b).setId(""+dc.getGeworpen().get(b));
                                 btnDices.get(b).setDisable(false);
-                                if(dc.getGekozen().contains(2)){
-                                    btnDices.get(b).setDisable(true);
-                                    
-                                }
+                               
                                 break;
-                        case 3:
+                        case 3:btnDices.get(b).setId(""+dc.getGeworpen().get(b));
                                 btnDices.get(b).setDisable(false);
-                                if(dc.getGekozen().contains(3)){
-                                    btnDices.get(b).setDisable(true);
-                                   
-                                }
+                              
                                 break;
-                        case 4: 
+                        case 4: btnDices.get(b).setId(""+dc.getGeworpen().get(b));
                                 btnDices.get(b).setDisable(false);
-                                if(dc.getGekozen().contains(4)){
-                                    btnDices.get(b).setDisable(true);
-                                
-                                }
+                               
                                break; 
-                        case 5: 
+                        case 5: btnDices.get(b).setId(""+dc.getGeworpen().get(b));
                                 btnDices.get(b).setDisable(false);
-                                if(dc.getGekozen().contains(5)){
-                                    btnDices.get(b).setDisable(true);
                                 
-                                }
                                break;
-                        case 6: 
+                        case 6: btnDices.get(b).setId(""+dc.getGeworpen().get(b));
                                 btnDices.get(b).setDisable(false);
-                                if(dc.getGekozen().contains(6)){
-                                    btnDices.get(b).setDisable(true);
                                 
-                                }
                                break;
                     }
                     
                     
                 }
+               
+                /////////////////////////////////////
               
+                     
             }
             
         });
         btnGooi.setId("btnGooi");
         btnGooi.setPrefSize(200, 50);
-       
+      
         ////////////////////////////////////////////////////////
         Button btnNieuwSpel = new Button();
         btnNieuwSpel.setId("btnNieuwSpel");
@@ -251,23 +236,48 @@ public class Tafel extends BorderPane {
         fail.showAndWait();
                         
                     }
-                    else {
+                    if(!dc.getGekozen().contains(dc.getSymbool())) {
                        // dc.setSymbool(Integer.parseInt(source.getId()));
                         System.out.printf("%n symbool is : %d",dc.getSymbool());
                         dc.getGekozen().add(dc.getSymbool());
-                        
-                      
-                    } 
-                System.out.printf("%n de score is :%d",dc.berekenScore());
+                        System.out.printf("%n de gekozen dobbels zijn : %s",dc.getGekozen().toString());
+                        System.out.printf("%n de score is :%d",dc.berekenScore());
                         System.out.printf(" %n #dobbels is: %d",dc.berekenAantalDobbelsteen());
+                        
+                        for(int i = 0; i < btnDices.size(); i++){ 
+                             for(int j=0;j<dc.getGekozen().size();j++){
+                                   if(Integer.parseInt(source.getId()) == Integer.parseInt(btnDices.get(i).getId())){               // genomen worden onzichtbaargezet en gedisabled want anders kan men ze nog nemen
+                                          // En ook worden deze uit de arraylist van btnDices geremoved zodat ze by nieuwe "gooi" niet meer meedoen
+                            btnDices.get(i).setId("10");
+                            gpCenter.getChildren().remove(btnDices.get(i));
+                            btnDices.remove(btnDices.get(i));
+                            
+                             
+                        }
+                             }
+                    
+                    } 
+                        System.out.printf("%n de size is : %d",btnDices.size());
+                       // System.out.printf("%n de score is :%d",dc.berekenScore());
+                       // System.out.printf(" %n #dobbels is: %d",dc.berekenAantalDobbelsteen());
                        // System.out.printf("%n de score is :%d",dc.berekenScore());
                        // System.out.printf(" %n #dobbels is: %d",dc.berekenAantalDobbelsteen());
                       // int aantal=Collections.frequency(idDobbels, Integer.parseInt(source.getId()));
                         
                       //int nieuwSize=btnDices.size()-aantal;
                         //System.out.printf("%n de size is %d",nieuwSize);
-                        
+                        /* for(int i = 0; i < btnDices.size(); i++){ 
+                             for(int j=0;j<dc.getGekozen().size();j++){
+                                   if(dc.getGekozen().get(j) == Integer.parseInt(btnDices.get(i).getId())){               // genomen worden onzichtbaargezet en gedisabled want anders kan men ze nog nemen
+                                          // En ook worden deze uit de arraylist van btnDices geremoved zodat ze by nieuwe "gooi" niet meer meedoen
+                            btnDices.get(i).setId("btnDiceDisabled");
+                            btnDices.remove(btnDices.get(i));
+                        }
+                             }*/
+// alle dobbelstenen die eenzelfde symbool hebben al dat je hebt 
                        
+                    }
+                       // System.out.printf("%n de size is : %d",btnDices.size());
                     }) ;
            
                 }
@@ -288,7 +298,7 @@ public class Tafel extends BorderPane {
              tileRow.getChildren().add(tegels.get(i));
             
         }
-      
+       
         /////////////////////////////////////////////// alligning
         
         vboxMiddle.getChildren().addAll(gpCenter, throwOrStop);
