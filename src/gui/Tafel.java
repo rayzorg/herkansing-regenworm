@@ -182,8 +182,8 @@ public class Tafel extends BorderPane {
                     
                 }
                
-                dc.getGeworpen().clear();
-                System.out.printf(" #dobbels is: %d",dc.berekenAantalDobbelsteen());
+               // dc.getGeworpen().clear();
+                
             }
             
         });
@@ -236,7 +236,7 @@ public class Tafel extends BorderPane {
                         System.out.printf("%n de score is :%d",dc.berekenScore());
                         
                      
-                        
+                        System.out.printf(" #dobbels is: %d",dc.berekenAantalDobbelsteen());
                     }) ;
            
                 }
