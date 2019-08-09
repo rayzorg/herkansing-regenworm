@@ -234,7 +234,8 @@ public class Tafel extends BorderPane {
                         //dc.getGekozen().add(Integer.parseInt(source.getId()));
                         dc.getGekozen().add(dc.getSymbool());
                         System.out.printf("%n de score is :%d",dc.berekenScore());
-                       
+                        
+                     
                         
                     }) ;
            

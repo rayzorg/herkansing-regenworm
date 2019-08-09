@@ -2,6 +2,7 @@ package domein;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Scanner;
 import javafx.scene.control.TextField;
@@ -144,8 +145,9 @@ public void resetScores(){
     
     
     public int berekenAantalDobbelsteen() {
-        
-        berekenAantalDobbelsteen = berekenAantalDobbelsteen - zijde[symbool];
+         int minAantal = Collections.frequency(geworpen, symbool);
+        geworpen.clear();
+        berekenAantalDobbelsteen = berekenAantalDobbelsteen - minAantal;
         
        
         return berekenAantalDobbelsteen;

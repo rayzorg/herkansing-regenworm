@@ -139,7 +139,7 @@ public class SpelersInfoSettings extends BorderPane{
                 @Override
                 public void handle(ActionEvent event) {
                     
-                    if(txfNaam1.getText().trim().equals("")){
+                    if(txfNaam1.getText().trim().equals("") || datePicker.valueProperty().getValue().toString().trim().equals("")){
                        
 
                       Alert fail= new Alert(AlertType.INFORMATION);
@@ -151,7 +151,7 @@ public class SpelersInfoSettings extends BorderPane{
                     }
                     
                     
-                    if(!txfNaam1.getText().trim().equals("")) {  
+                    if(!txfNaam1.getText().trim().equals("") || datePicker.valueProperty().getValue().toString().trim().equals("")) {  
                     geefSpelersVoor();
                     btnNextOnAction( event);
                         
