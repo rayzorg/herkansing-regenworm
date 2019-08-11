@@ -122,6 +122,7 @@ public class SpelersInfoSettings extends BorderPane{
                 int result = 0;
                 int totaalScoreSpeler = 0;
                 ArrayList<Integer> eigenStapel = new ArrayList<>();
+                ArrayList<Button >stapel2=new ArrayList<>();
 
                 int aantalWormen = 0;
 
@@ -131,7 +132,7 @@ public class SpelersInfoSettings extends BorderPane{
                 Period.between(dob, curDate).getYears();
                 result = Period.between(dob, curDate).getYears();
 
-                dc.spelerInArrayToevoegen(txfNaam1, aantalWormen, dob, result, berekenAantalDobbelsteen, totaalScoreSpeler, eigenStapel, aantalWormen);
+                dc.spelerInArrayToevoegen(txfNaam1, aantalWormen, dob, result, berekenAantalDobbelsteen, totaalScoreSpeler, eigenStapel,stapel2, aantalWormen);
 
             });
 

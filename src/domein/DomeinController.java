@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class DomeinController {
@@ -15,28 +16,35 @@ public class DomeinController {
     private String date;
     private int result;
     private int berekenAantalDobbelsteen = 8;
-    int totaalScoreSpeler = 0;
-    public boolean lagereTegel = false;
-    public boolean steal = false;
-    public int berekenAantalWormen = 0;
+    private int totaalScoreSpeler = 0;
+    private boolean lagereTegel = false;
+    private boolean steal = false;
+    private int berekenAantalWormen = 0;
 
-    TextField txfNaam1 = new TextField();
+    private TextField txfNaam1 = new TextField();
     private LocalDate dob;
-    public Speler spelersList[] = new Speler[7];
+    private Speler spelersList[] = new Speler[7];
     public ArrayList<Speler> spelersArrayList = new ArrayList<>();
 
     public ArrayList<Integer> tegelStapel = new ArrayList<>();
     public ArrayList<Integer> eigenStapel = new ArrayList<>();
+    public ArrayList<Button> stapel2 = new ArrayList<>();
 
-    public ArrayList<Integer> omgedraaideTegels = new ArrayList<>();
+    private ArrayList<Integer> omgedraaideTegels = new ArrayList<>();
 ////////// Klasses instantieren ////////////////////////////////////////////////////////////////////    
-    Speler speler = new Speler(txfNaam1, dob, result, berekenAantalDobbelsteen, totaalScoreSpeler, eigenStapel, berekenAantalWormen);///als je private Speler speler; dan geeft die een nullpointerexception
+    Speler speler = new Speler(txfNaam1, dob, result, berekenAantalDobbelsteen, totaalScoreSpeler, eigenStapel, stapel2, berekenAantalWormen);///als je private Speler speler; dan geeft die een nullpointerexception
 
 ////////// Methodes ////////////////////////////////////////////////////////////////////////////////    
     public DomeinController() {
         setSpelersList(spelersList);
         setSpelersArrayList(spelersArrayList);
 
+    }
+
+    
+
+    public ArrayList<Button> getStapel2(Speler speler) {
+        return speler.getStapel2();
     }
 
     public ArrayList<Integer> getOmgedraaideTegels() {
@@ -62,6 +70,8 @@ public class DomeinController {
 
         return speler.getEigenStapel();
     }
+
+    
 
     public class RijComparator implements Comparator<Integer> {
 
@@ -121,18 +131,16 @@ public class DomeinController {
         return spelersArrayList;
     }
 
-   /* public void spelerArrayAanmaken(int aantalSpelers) {
+    /* public void spelerArrayAanmaken(int aantalSpelers) {
 
         spelersList = new Speler[aantalSpelers];
     }*/
-
     ////nodig om spelers af te printen anders geeft die symbolen ipv namen
     //en heeft geen invloed op output (moet kijken naar speler klasse
-    
     //wijzigingen tov ui ;textfield,localdate
-    public void spelerInArrayToevoegen(TextField txfNaam1, int aantal, LocalDate dob, int result, int berekenAantalDobbelsteen, int totaalScoreSpeler, ArrayList<Integer> eigenStapel, int berekenAantalWormen) {
+    public void spelerInArrayToevoegen(TextField txfNaam1, int aantal, LocalDate dob, int result, int berekenAantalDobbelsteen, int totaalScoreSpeler, ArrayList<Integer> eigenStapel, ArrayList<Button> stapel2, int berekenAantalWormen) {
 
-        spelersArrayList.add(new Speler(txfNaam1, dob, result, berekenAantalDobbelsteen, totaalScoreSpeler, eigenStapel, berekenAantalWormen));
+        spelersArrayList.add(new Speler(txfNaam1, dob, result, berekenAantalDobbelsteen, totaalScoreSpeler, eigenStapel, stapel2, berekenAantalWormen));
         //spelersList[aantal] = new Speler(txfNaam1, dob, result, berekenAantalDobbelsteen, totaalScoreSpeler, eigenStapel, berekenAantalWormen);
         ///////////gaat hier array in volgore steken 
         Collections.sort(spelersArrayList, new AgeComparator());

@@ -32,9 +32,9 @@ public class Tafel extends BorderPane {
     private final int dobbelstenenAantal = 8;
     private DropShadow shadow = new DropShadow();
     private int gooi;
-    private int nieuw;
+    private Button nieuw;
     private int item;
-    private int item2;
+    private Button item2;
     private int theSteal = 0;
     private int victim = 0;
 
@@ -186,7 +186,7 @@ public class Tafel extends BorderPane {
                         fail.setHeaderText("POP UP");
                         fail.setContentText(" Jammer, alles werd al is gepakt!  Je zal een tegel verliezen als je er al hebt.");
                         fail.showAndWait();
-                        for (int spelers = 0; spelers < dc.getSpelersArrayList().size(); spelers++) {
+                       /* for (int spelers = 0; spelers < dc.getSpelersArrayList().size(); spelers++) {
                             if (!dc.eigenStapel(dc.getSpelersArrayList().get(spelers)).isEmpty()) {
 
                                 item = dc.eigenStapel(dc.getSpelersArrayList().get(spelers)).size();
@@ -202,7 +202,7 @@ public class Tafel extends BorderPane {
                                 }
                             } catch (IndexOutOfBoundsException e) {
 
-                            }*/
+                            }
                                 if (nieuw > nieuw2) {
                                     dc.getTegelStapel().add((Integer) nieuw);
                                     dc.eigenStapel(dc.getSpelersArrayList().get(spelers)).remove((Integer) nieuw);
@@ -221,7 +221,7 @@ public class Tafel extends BorderPane {
 
                             ////volgende beurt
                             //break;
-                        }
+                        }*/
                     }
                     //volgende if statement spel
 
@@ -329,11 +329,11 @@ public class Tafel extends BorderPane {
             ////////////////////////////////////////////////////////
             for (int i = 0; i < tegels.size(); i++) {
                 tegels.get(i).setOnAction(e -> {
-                       Node tegelId = (Node) e.getSource();
-                       System.out.printf("%n %d",Integer.parseInt(tegelId.getId()));
+                    Node tegelId = (Node) e.getSource();
+                    System.out.printf("%n %d", Integer.parseInt(tegelId.getId()));
 
 
-                        /*if (!dc.getGekozen().contains(6)) {
+                    /*if (!dc.getGekozen().contains(6)) {
                             Alert fail = new Alert(Alert.AlertType.INFORMATION);
                             fail.setHeaderText("SPIJTIG");
                             fail.setContentText("Jammer, je beurt was niet succesvol aangezien je geen worm hebt kunnen bemachtigen en je zal een tegel verliezen als je er al hebt!");
@@ -377,8 +377,8 @@ public class Tafel extends BorderPane {
                             }
                         }
                         ////volgende regel code voor als het wel lukt
-                         */ if (dc.getGekozen().contains(6)) {
-                            /*for (int b = 0; b < dc.getSpelersArrayList().size(); b++) {
+                     */ if (dc.getGekozen().contains(6)) {
+                        /*for (int b = 0; b < dc.getSpelersArrayList().size(); b++) {
                                 if (!dc.eigenStapel(dc.getSpelersArrayList().get(b)).isEmpty()) {
                                     nietAllemaalLeeg = true;
                                 }
@@ -521,67 +521,67 @@ public class Tafel extends BorderPane {
                                 }
                             } else*/
 
-                            for (int tegel = 0; tegel < tegels.size(); tegel++) {
-                                if (tegel < dc.berekenScore()) {
-                                    lagereTegel = true;
-                                }
+                        for (int tegel = 0; tegel < tegels.size(); tegel++) {
+                            if (tegel < dc.berekenScore()) {
+                                lagereTegel = true;
                             }
-                            if (lagereTegel == true) {
-
-                                for (int tegels = 0; tegels < dc.getSpelersArrayList().size(); tegels++) {
-                                    if (!dc.eigenStapel(dc.getSpelersArrayList().get(tegels)).isEmpty()) {
-                                        item = dc.eigenStapel(dc.getSpelersArrayList().get(tegels)).size();
-                                        nieuw = dc.eigenStapel(dc.getSpelersArrayList().get(tegels)).get(((item - 1)));
-
-                                        System.out.printf("%nBovenste tegel %s : %d", dc.getSpelersArrayList().get(tegels).getNaamSpeler(), nieuw);
-                                    } else {
-                                        System.out.printf("%nBovenste tegel %s : leeg", dc.getSpelersArrayList().get(tegels).getNaamSpeler());
-                                    }
-                                }
-
-                                dc.setKiesTegel(Integer.parseInt(tegelId.getId()));
-                                if (tegels.contains(dc.getKiesTegel()) || dc.getKiesTegel() >= dc.berekenScore()) {
-                                    Alert fail = new Alert(Alert.AlertType.INFORMATION);
-                                    fail.setHeaderText("SPIJTIG");
-                                    fail.setContentText("Je moet een tegel nemen die beschikbaar is en lager of gelijk is aan uw score.");
-                                    fail.showAndWait();
-
-                                }
-                               /*
-                                for (int k = 0; k < tegels.size(); k++) {
-                                    dc.eigenStapel(dc.getSpelersArrayList().get(k)).add((Integer) e.getSource());
-                                }
-                                   */ 
-                                    tegels.remove(e.getSource());
-                                    tileRow.getChildren().remove(e.getSource());
-                                   
-                                   
-                               
-
-                                 System.out.printf("%n %d",tegels.size());
-                                //dc.getTegelStapel().remove((Integer) dc.getKiesTegel());
-                            }
+                        }
+                        if (lagereTegel == true) {
 
                             for (int tegels = 0; tegels < dc.getSpelersArrayList().size(); tegels++) {
-                                if (!dc.eigenStapel(dc.getSpelersArrayList().get(tegels)).isEmpty()) {
-                                    item = dc.eigenStapel(dc.getSpelersArrayList().get(tegels)).size();
-                                    nieuw = dc.eigenStapel(dc.getSpelersArrayList().get(tegels)).get((Integer) item - 1);
+                                if (!dc.getStapel2(dc.getSpelersArrayList().get(tegels)).isEmpty()) {
+                                    item = dc.getStapel2(dc.getSpelersArrayList().get(tegels)).size();
+                                    nieuw = dc.getStapel2(dc.getSpelersArrayList().get(tegels)).get((item - 1));
 
-                                    System.out.printf("%nBovenste tegel %s : %d", dc.getSpelersArrayList().get(tegels).getNaamSpeler(), nieuw);
+                                    System.out.printf("%nBovenste tegel %s : %s", dc.getSpelersArrayList().get(tegels).getTxfNaam1(), nieuw.getText());
                                 } else {
-                                    System.out.printf("%nBovenste tegel %s : leeg", dc.getSpelersArrayList().get(tegels).getNaamSpeler());
-
+                                    System.out.printf("%nBovenste tegel %s : leeg", dc.getSpelersArrayList().get(tegels).getTxfNaam1());
                                 }
                             }
 
-                            dc.resetAantalDobbelsteen();
-                            dc.resetScore();
-                            dc.getGekozen().clear();
-                            dc.getGeworpen().clear();
+                            dc.setKiesTegel(Integer.parseInt(tegelId.getId()));
+                            if (!tegels.contains(e.getSource()) || dc.getKiesTegel() >= dc.berekenScore()) {
+                                Alert fail = new Alert(Alert.AlertType.INFORMATION);
+                                fail.setHeaderText("SPIJTIG");
+                                fail.setContentText("Je moet een tegel nemen die beschikbaar is en lager of gelijk is aan uw score.");
+                                fail.showAndWait();
 
-                            //break;
+                            }
+                           
+                                for (int k = 0; k < tegels.size(); k++) {
+                                if (tegels.get(k).equals(e.getSource())) {
+                                    dc.getStapel2(dc.getSpelersArrayList().get(k)).add((Button)e.getSource());
+                                }
+                            }
+                            
+                            System.out.printf(" %n de tegel bij de speler is : %d",dc.getStapel2(dc.getSpelersArrayList().get(0)).size());
+                            tegels.remove(e.getSource());
+                            tileRow.getChildren().remove(e.getSource());
+
+                            System.out.printf("%n %d", tegels.size());
+                           
                         }
-                    
+
+                        for (int tegels = 0; tegels < dc.getSpelersArrayList().size(); tegels++) {
+                            if (!dc.getStapel2(dc.getSpelersArrayList().get(tegels)).isEmpty()) {
+                                item = dc.getStapel2(dc.getSpelersArrayList().get(tegels)).size();
+                                nieuw = dc.getStapel2(dc.getSpelersArrayList().get(tegels)).get(item -1);
+
+                                System.out.printf("%nBovenste tegel %s : %s", dc.getSpelersArrayList().get(tegels).getTxfNaam1(), nieuw.getText());
+                            } else {
+                                System.out.printf("%nBovenste tegel %s : leeg", dc.getSpelersArrayList().get(tegels).getTxfNaam1());
+
+                            }
+                        }
+
+                        dc.resetAantalDobbelsteen();
+                        dc.resetScore();
+                        dc.getGekozen().clear();
+                        dc.getGeworpen().clear();
+
+                        //break;
+                        
+                    }
 
                 });
 
@@ -656,9 +656,8 @@ public class Tafel extends BorderPane {
 
             tegels.add(new Button());
             tegels.get(indexTegels).setId(Integer.toString(indexTegels + 21));
-           
 
-             Button tegel = tegels.get(indexTegels);
+            Button tegel = tegels.get(indexTegels);
             //Adding the shadow when the mouse cursor is on
             tegels.get(indexTegels).addEventHandler(MouseEvent.MOUSE_ENTERED, (MouseEvent e) -> {
                 tegel.setEffect(shadow);
@@ -668,8 +667,6 @@ public class Tafel extends BorderPane {
                 tegel.setEffect(null);
             });
         }
-       
-       
 
     }
 
