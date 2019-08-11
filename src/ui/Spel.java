@@ -143,6 +143,18 @@ public class Spel{
                         break;
                 }
          
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 System.out.printf("%n%nKies symbool gegooide dobbelsteen: ");
                 dc.setSymbool(input.nextInt());
          
