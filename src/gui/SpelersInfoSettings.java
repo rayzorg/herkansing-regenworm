@@ -13,6 +13,7 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.Stack;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -109,7 +110,7 @@ public class SpelersInfoSettings extends BorderPane {
                 int result = 0;
                 int totaalScoreSpeler = 0;
                 ArrayList<Integer> eigenStapel = new ArrayList<>();
-                ArrayList<Button> stapel2 = new ArrayList<>();
+                Stack <Button> stapel2 = new Stack<>();
 
                 int aantalWormen = 0;
 

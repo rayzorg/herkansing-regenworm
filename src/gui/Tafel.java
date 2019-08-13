@@ -93,13 +93,13 @@ public class Tafel extends BorderPane {
         dc.eersteSpeler();
 
         lblCurrentPlayer.setText(String.format("huidige speler : %n %s", dc.getSpelerAanBeurt().getTxfNaam1().getText())); // voor in Leftgp te zetten
-        
+
         for (int spelers = 0; spelers < dc.getSpelersArrayList().size(); spelers++) {
             Label lblSpeler1 = new Label(dc.getSpelersArrayList().get(spelers).getTxfNaam1().getText());
             gpRight.add(lblSpeler1, g, spelers);
-            if(!dc.getSpelerAanBeurt().getStapel2().isEmpty()){
-             Button btnUpperTileSpeler1 = dc.getSpelerAanBeurt().getStapel2().get(dc.getStapel2(dc.getSpelerAanBeurt()).size()-1);
-            
+
+            Button btnUpperTileSpeler1 = new Button();
+
             btnUpperTileSpeler1.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent ae) {
@@ -111,7 +111,7 @@ public class Tafel extends BorderPane {
             btnUpperTileSpeler1.setPrefSize(100, 160);
             btnUpperTilesPlayers.add(btnUpperTileSpeler1);
             gpRight.add(btnUpperTileSpeler1, g + 1, spelers);
-        }
+
         }
 
         btnStop.setOnAction(new EventHandler<ActionEvent>() {
@@ -122,6 +122,24 @@ public class Tafel extends BorderPane {
                     btnDices.get(i).setId("10");
                 }
 
+                
+                //for (int spelers = 0; spelers < dc.getSpelersArrayList().size(); spelers++) {
+                if (!dc.getSpelerAanBeurt().getStapel2().isEmpty()) {
+                    Button btnUpperTileSpeler1 = dc.getSpelerAanBeurt().getStapel2().peek();
+
+                    btnUpperTileSpeler1.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent ae) {
+                            // btnUpperTileSpeler1OnAction(ae);
+                        }
+                    });
+
+                    btnUpperTileSpeler1.setId(dc.getSpelerAanBeurt().getStapel2().peek().getId());
+                    btnUpperTileSpeler1.setPrefSize(100, 160);
+                    btnUpperTilesPlayers.add(btnUpperTileSpeler1);
+                    gpRight.add(btnUpperTileSpeler1, g + 1, 0);
+                }
+                //}
                 dc.resetScore();
                 dc.resetAantalDobbelsteen();
                 dc.getGekozen().clear();
@@ -276,12 +294,6 @@ public class Tafel extends BorderPane {
             btnDices.get(z).setOnAction(e -> {
 
                 Node source = (Node) e.getSource();
-                idDobbels = new ArrayList<Integer>(btnDices.size());
-                for (int i = 0; i < btnDices.size(); i++) {
-
-                    idDobbels.add(Integer.parseInt(btnDices.get(i).getId()));
-
-                }
 
                 dc.setSymbool(Integer.parseInt(source.getId()));
 
@@ -314,8 +326,7 @@ public class Tafel extends BorderPane {
                     for (int i = 0; i < btnDices.size(); i++) {
 
                         if (btnDices.get(i).getId().equals(source.getId())) {
-                            // btnDices.get(i).setId("10");
-                            //  btnDices.remove(btnDices.get(i));
+
                             gpCenter.getChildren().remove(btnDices.get(i));
                             btnDices.remove(btnDices.get(i));
                             if (btnDices.size() != dc.berekenAantalDobbelsteen() && btnDices.get(i).getId().equals(source.getId())) {
@@ -339,52 +350,7 @@ public class Tafel extends BorderPane {
                 Node tegelId = (Node) e.getSource();
                 System.out.printf("%n %d", Integer.parseInt(tegelId.getId()));
 
-
-                /*if (!dc.getGekozen().contains(6)) {
-                            Alert fail = new Alert(Alert.AlertType.INFORMATION);
-                            fail.setHeaderText("SPIJTIG");
-                            fail.setContentText("Jammer, je beurt was niet succesvol aangezien je geen worm hebt kunnen bemachtigen en je zal een tegel verliezen als je er al hebt!");
-                            fail.showAndWait();
-
-                            for (int spelers = 0; spelers < dc.getSpelersArrayList().size(); spelers++) {
-                                if (!dc.eigenStapel(dc.getSpelersArrayList().get(spelers)).isEmpty()) {
-
-                                    item = dc.eigenStapel(dc.getSpelersArrayList().get(spelers)).size();
-                                    nieuw = dc.eigenStapel(dc.getSpelersArrayList().get(spelers)).get( item - 1);
-                                    //bovenste tegel checken
-                                    item2 = tegels.size();
-                                    int nieuw2 = tegels.get((Integer)(item2 - 1) );
-
-                                    /*try {
-                                if (!dc.eigenStapel(dc.getSpelersArrayList().get(spelers)).toString().isEmpty()) {
-                                    System.out.printf("%nBovenste tegel %s: %d %n", dc.getSpelersArrayList().get(spelers).getNaamSpeler(), (Integer) nieuw);
-
-                                }
-                            } catch (IndexOutOfBoundsException e) {
-
-                            }
-                                    if (nieuw > nieuw2) {
-                                        dc.getTegelStapel().add((Integer) nieuw);
-                                        dc.eigenStapel(dc.getSpelersArrayList().get(spelers)).remove((Integer) nieuw);
-                                    } else {
-                                        dc.getOmgedraaideTegels().add((Integer) nieuw);
-                                        dc.eigenStapel(dc.getSpelersArrayList().get(spelers)).remove((Integer) nieuw);
-                                    }
-                                    //einde checken
-                                }
-
-                                //System.out.printf("%nOmgedraaide tegels: %n%s%n", dc.getOmgedraaideTegels().toString());
-                                dc.resetAantalDobbelsteen();
-                                dc.resetScore();
-                                dc.getGekozen().clear();
-                                dc.getGeworpen().clear();
-
-                                ////volgende beurt
-                                //break;
-                            }
-                        }
-                        ////volgende regel code voor als het wel lukt
-                 */ if (dc.getGekozen().contains(6)) {
+                if (dc.getGekozen().contains(6)) {
                     /*for (int b = 0; b < dc.getSpelersArrayList().size(); b++) {
                                 if (!dc.eigenStapel(dc.getSpelersArrayList().get(b)).isEmpty()) {
                                     nietAllemaalLeeg = true;
@@ -535,17 +501,6 @@ public class Tafel extends BorderPane {
                     }
                     if (lagereTegel == true) {
 
-                        for (int tegels = 0; tegels < dc.getSpelersArrayList().size(); tegels++) {
-                            if (!dc.getStapel2(dc.getSpelersArrayList().get(tegels)).isEmpty()) {
-                                item = dc.getStapel2(dc.getSpelersArrayList().get(tegels)).size();
-                                nieuw = dc.getStapel2(dc.getSpelersArrayList().get(tegels)).get((item - 1));
-
-                                System.out.printf("%nBovenste tegel %s : %s", dc.getSpelersArrayList().get(tegels).getTxfNaam1(), nieuw.getText());
-                            } else {
-                                System.out.printf("%nBovenste tegel %s : leeg", dc.getSpelersArrayList().get(tegels).getTxfNaam1());
-                            }
-                        }
-
                         dc.setKiesTegel(Integer.parseInt(tegelId.getId()));
                         if (!tegels.contains(e.getSource()) || dc.getKiesTegel() >= dc.berekenScore()) {
                             Alert fail = new Alert(Alert.AlertType.INFORMATION);
@@ -557,28 +512,19 @@ public class Tafel extends BorderPane {
 
                         for (int k = 0; k < tegels.size(); k++) {
                             if (tegels.get(k).equals(e.getSource())) {
-                                dc.getStapel2(dc.getSpelersArrayList().get(k)).add((Button) e.getSource());
+
+                                dc.getSpelerAanBeurt().getStapel2().add((Button) e.getSource());
                             }
                         }
+                        System.out.printf("%n%d", dc.getSpelerAanBeurt().getStapel2().size());
 
-                        System.out.printf(" %n de tegel bij de speler is : %d", dc.getStapel2(dc.getSpelersArrayList().get(0)).size());
+                        System.out.printf(" %n de tegel bij %s is : %s", dc.getSpelerAanBeurt().getTxfNaam1().getText(), dc.getSpelerAanBeurt().getStapel2().toString());
                         tegels.remove(e.getSource());
                         tileRow.getChildren().remove(e.getSource());
 
                         System.out.printf("%n %d", tegels.size());
+                        System.out.printf("%n %s", dc.getSpelerAanBeurt().getStapel2().peek());
 
-                    }
-
-                    for (int tegels = 0; tegels < dc.getSpelersArrayList().size(); tegels++) {
-                        if (!dc.getStapel2(dc.getSpelersArrayList().get(tegels)).isEmpty()) {
-                            item = dc.getStapel2(dc.getSpelersArrayList().get(tegels)).size();
-                            nieuw = dc.getStapel2(dc.getSpelersArrayList().get(tegels)).get(item - 1);
-
-                            System.out.printf("%nBovenste tegel %s : %s", dc.getSpelersArrayList().get(tegels).getTxfNaam1(), nieuw.getText());
-                        } else {
-                            System.out.printf("%nBovenste tegel %s : leeg", dc.getSpelersArrayList().get(tegels).getTxfNaam1());
-
-                        }
                     }
 
                 }

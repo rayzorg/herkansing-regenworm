@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.Stack;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -25,7 +26,7 @@ public class Speler {
     public int symbool;
     public int kiesTegel;
     public ArrayList<Integer> eigenStapel = new ArrayList<>();
-    public ArrayList<Button> stapel2 = new ArrayList<>();
+    public Stack <Button> stapel2 = new Stack<>();
 ///////////////// Klasses instantieren ///////////////////////////////////////////////////////////    
     Scanner input = new Scanner(System.in);
     Dobbelsteen dobbelstenen = new Dobbelsteen();
@@ -35,7 +36,7 @@ public class Speler {
 
 //////////////// Methodes /////////////////////////////////////////////////////////////////////////    
     //wijzigingen tov ui ;textfield,localdate
-    Speler(TextField txfNaam1, LocalDate dob, int result, int berekenAantalDobbelsteen, int totaalScoreSpeler, ArrayList<Integer> eigenStapel, ArrayList<Button> stapel2, int berekenAantalWormen) {
+    Speler(TextField txfNaam1, LocalDate dob, int result, int berekenAantalDobbelsteen, int totaalScoreSpeler, ArrayList<Integer> eigenStapel, Stack<Button> stapel2, int berekenAantalWormen) {
         setTxfNaam1(txfNaam1);
         setNaamSpeler(naamSpeler);
         setDob(dob);
@@ -43,11 +44,11 @@ public class Speler {
         this.berekenAantalDobbelsteen = berekenAantalDobbelsteen;
         this.totaalScoreSpeler = totaalScoreSpeler;
         this.eigenStapel = eigenStapel;
-        this.stapel2 = stapel2;
+        this.stapel2=stapel2;
         this.berekenAantalWormen = berekenAantalWormen;
     }
 
-    public ArrayList<Button> getStapel2() {
+    public Stack <Button> getStapel2() {
         return stapel2;
     }
 
