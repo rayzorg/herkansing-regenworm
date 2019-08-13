@@ -176,7 +176,7 @@ and open the template in the editor.
 }
 
 #10{
-    -fx-background-color: red;
+    -fx-background-color: transparent;
     -fx-border-color:transparent;
     
 }

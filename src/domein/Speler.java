@@ -262,5 +262,6 @@ public class Speler {
     public void setKiesTegel(int kiesTegel) {
         this.kiesTegel = kiesTegel;
     }
+    
 
 }

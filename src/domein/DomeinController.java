@@ -21,6 +21,8 @@ public class DomeinController {
     private boolean steal = false;
     private int berekenAantalWormen = 0;
 
+    private int teller=0;
+    private Speler spelerAanBeurt;
     private TextField txfNaam1 = new TextField();
     private LocalDate dob;
     private Speler spelersList[] = new Speler[7];
@@ -145,6 +147,36 @@ public class DomeinController {
         ///////////gaat hier array in volgore steken 
         Collections.sort(spelersArrayList, new AgeComparator());
 
+    }
+    public void eersteSpeler(){
+         for(int i=0;i<spelersArrayList.size();i++){
+            
+            spelerAanBeurt=spelersArrayList.get(0);
+            ++teller;
+        }
+          System.out.println("before de speler teller: "+teller+"spelernaam: "+ spelerAanBeurt.getTxfNaam1().getText());
+    }
+    public void volgendeSpeler(){
+        
+       
+        
+        for(Speler speler: spelersArrayList){
+           // System.out.printf(speler.getTxfNaam1().getText());  
+        }
+        //System.out.println("before de speler teller: "+teller+"spelernaam: "+ spelerAanBeurt.getTxfNaam1().getText());
+        
+        if(teller==0){
+            spelerAanBeurt=spelersArrayList.get(++teller);
+        }else{
+            spelerAanBeurt=spelersArrayList.get(++teller % spelersArrayList.size());
+        }
+        //System.out.printf(" %n %d %s %n",teller,spelerAanBeurt.getTxfNaam1().getText());
+        System.out.println("after de speler teller: "+teller+"spelernaam: "+spelerAanBeurt.getTxfNaam1().getText());
+        
+    }
+
+    public Speler getSpelerAanBeurt() {
+        return spelerAanBeurt;
     }
 
     ////////////////////////////////////////////////////////////////

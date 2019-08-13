@@ -38,15 +38,13 @@ import javafx.stage.Stage;
  *
  * @author bjorn
  */
-public class SpelersInfoSettings extends BorderPane{
-    
+public class SpelersInfoSettings extends BorderPane {
+
     private final int aantalSpelers;
     private final DomeinController dc;
-    private final SpelersSettings login; 
+    private final SpelersSettings login;
     private final Startscherm sts;
-    
-    
-    
+
     public SpelersInfoSettings(Startscherm sts, int aantalSpelers, SpelersSettings login, DomeinController dc) // login???
     {
         this.sts = sts;
@@ -55,22 +53,17 @@ public class SpelersInfoSettings extends BorderPane{
         this.dc = dc;
         buildGui();
     }
-    
-    private void buildGui() 
-    {
-        
+
+    private void buildGui() {
+
 //Panes/Boxes ******************************************************************        
         getStylesheets().add("/css/spelersinfosettings.css");
         GridPane gpane = new GridPane();
         VBox vbox = new VBox();
         HBox bottom = new HBox();
         BorderPane bp = new BorderPane();
-        
-        
-        
-        
+
 //Labels ***********************************************************************        
-        
         Label lblSpelers = new Label("Spelers");
         lblSpelers.setId("lblSpelers");
 
@@ -96,16 +89,10 @@ public class SpelersInfoSettings extends BorderPane{
             Label lblSpeler1Naam = new Label(String.format("naam speler %d", aantal + 1));//naam1
 
             lblSpeler1Naam.setId("speler");
-            
-            
-            
-            
-           
 
             TextField txfNaam1 = new TextField();
-            
-           // String naamSpeler=txfNaam1.getText();
 
+            // String naamSpeler=txfNaam1.getText();
             Label lblSpeler1Gbd = new Label(String.format("geboortedatum")); //gbd1
             Label lblSpeler1Gbd2 = new Label(String.format("geboortedatum")); //gbd1
 
@@ -122,7 +109,7 @@ public class SpelersInfoSettings extends BorderPane{
                 int result = 0;
                 int totaalScoreSpeler = 0;
                 ArrayList<Integer> eigenStapel = new ArrayList<>();
-                ArrayList<Button >stapel2=new ArrayList<>();
+                ArrayList<Button> stapel2 = new ArrayList<>();
 
                 int aantalWormen = 0;
 
@@ -132,36 +119,35 @@ public class SpelersInfoSettings extends BorderPane{
                 Period.between(dob, curDate).getYears();
                 result = Period.between(dob, curDate).getYears();
 
-                dc.spelerInArrayToevoegen(txfNaam1, aantalWormen, dob, result, berekenAantalDobbelsteen, totaalScoreSpeler, eigenStapel,stapel2, aantalWormen);
+                dc.spelerInArrayToevoegen(txfNaam1, aantalWormen, dob, result, berekenAantalDobbelsteen, totaalScoreSpeler, eigenStapel, stapel2, aantalWormen);
 
             });
 
             btnNext.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    
-                    if(txfNaam1.getText().trim().equals("") || datePicker.valueProperty().getValue().toString().trim().equals("")){
-                       
 
-                      Alert fail= new Alert(AlertType.INFORMATION);
-        fail.setHeaderText("LEEG");
-        fail.setContentText("Je moet een naam invoeren en een datum kiezen!");
-        
-        fail.showAndWait();
-        //btnNext.setDisable(true);
+                    if (txfNaam1.getText().trim().equals("") || datePicker.valueProperty().getValue().toString().trim().equals("")) {
+
+                        Alert fail = new Alert(AlertType.INFORMATION);
+                        fail.setHeaderText("LEEG");
+                        fail.setContentText("Je moet een naam invoeren en een datum kiezen!");
+
+                        fail.showAndWait();
+                        //btnNext.setDisable(true);
                     }
-                    
-                    try{
-                    if(!txfNaam1.getText().trim().equals("") || datePicker.valueProperty().getValue().toString().trim().equals("")) {  
-                    geefSpelersVoor();
-                    btnNextOnAction( event);
-                        
+
+                    try {
+                        if (!txfNaam1.getText().trim().equals("") || datePicker.valueProperty().getValue().toString().trim().equals("")) {
+                            geefSpelersVoor();
+                            btnNextOnAction(event);
+
+                        }
+                    } catch (NullPointerException e) {
+
                     }
-            }catch(NullPointerException e){
-                
-            }
                 }
-                    
+
             });
             btnNext.setId("btnNext");
             btnNext.setPrefSize(100, 100);
@@ -179,57 +165,50 @@ public class SpelersInfoSettings extends BorderPane{
         btnBack.setId("btnBack");
         btnBack.setPrefSize(100, 100);
 
-        vbox.getChildren().addAll(lblSpelers, gpane); 
+        vbox.getChildren().addAll(lblSpelers, gpane);
         bottom.getChildren().addAll(btnBack, btnNext);
-        
-        
-        
-        
-        
-        
+
         lblSpelers.setAlignment(Pos.CENTER);
         vbox.setAlignment(Pos.CENTER);
-        
-        
-        lblSpelers.setPadding(new Insets(105,0,0,0));
-        
+
+        lblSpelers.setPadding(new Insets(105, 0, 0, 0));
+
         gpane.setAlignment(Pos.CENTER);
-        gpane.setPadding(new Insets(10,0,0,0));
+        gpane.setPadding(new Insets(10, 0, 0, 0));
         gpane.setHgap(10);
         gpane.setVgap(10);
-        
+
         bottom.setAlignment(Pos.BOTTOM_CENTER);
         bottom.setPadding(new Insets(15));
         bottom.setSpacing(15);
-        
-        bp.setCenter(vbox); 
-        
+
+        bp.setCenter(vbox);
+
         bp.setBottom(bottom);
         this.setCenter(bp);
-        
+
     }
-    
-    
+
     public void geefSpelersVoor() {
         for (int spelers = 0; spelers < dc.getSpelersArrayList().size(); spelers++) {
             System.out.printf(" De spelers zijn : %s ", dc.getSpelersArrayList().get(spelers).toString());
         }
+      // dc.volgendeSpeler();
     }
-    
-    private void btnNextOnAction(ActionEvent event)
-    {
-       Tafel tafel = new Tafel(sts, dc);
+
+    private void btnNextOnAction(ActionEvent event) {
+        Tafel tafel = new Tafel(sts, dc);
         Scene scene = new Scene(tafel);
-        
+
         Stage stage = (Stage) this.getScene().getWindow();
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();
-        
-         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-        stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2); 
-        stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 4);  
-        
+
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
+        stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 4);
+
     }
-     
+
 }
