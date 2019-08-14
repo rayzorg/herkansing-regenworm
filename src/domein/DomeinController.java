@@ -22,7 +22,7 @@ public class DomeinController {
     private boolean steal = false;
     private int berekenAantalWormen = 0;
 
-    private int teller=0;
+    private int teller = 0;
     private Speler spelerAanBeurt;
     private TextField txfNaam1 = new TextField();
     private LocalDate dob;
@@ -31,9 +31,11 @@ public class DomeinController {
 
     public ArrayList<Integer> tegelStapel = new ArrayList<>();
     public ArrayList<Integer> eigenStapel = new ArrayList<>();
-    public Stack <Button> stapel2 = new Stack<>();
+    public Stack<Button> stapel2 = new Stack<>();
 
     private ArrayList<Integer> omgedraaideTegels = new ArrayList<>();
+    private Stack<Button> tegelsOm = new Stack<>();
+
 ////////// Klasses instantieren ////////////////////////////////////////////////////////////////////    
     Speler speler = new Speler(txfNaam1, dob, result, berekenAantalDobbelsteen, totaalScoreSpeler, eigenStapel, stapel2, berekenAantalWormen);///als je private Speler speler; dan geeft die een nullpointerexception
 
@@ -44,9 +46,11 @@ public class DomeinController {
 
     }
 
-    
+    public Stack<Button> getTegelsOm() {
+        return tegelsOm;
+    }
 
-    public Stack <Button> getStapel2(Speler speler) {
+    public Stack<Button> getStapel2(Speler speler) {
         return speler.getStapel2();
     }
 
@@ -73,8 +77,6 @@ public class DomeinController {
 
         return speler.getEigenStapel();
     }
-
-    
 
     public class RijComparator implements Comparator<Integer> {
 
@@ -149,31 +151,31 @@ public class DomeinController {
         Collections.sort(spelersArrayList, new AgeComparator());
 
     }
-    public void eersteSpeler(){
-         for(int i=0;i<spelersArrayList.size();i++){
-            
-            spelerAanBeurt=spelersArrayList.get(0);
+
+    public void eersteSpeler() {
+        for (int i = 0; i < spelersArrayList.size(); i++) {
+
+            spelerAanBeurt = spelersArrayList.get(0);
             ++teller;
         }
-          System.out.println("before de speler teller: "+teller+"spelernaam: "+ spelerAanBeurt.getTxfNaam1().getText());
+        System.out.println("before de speler teller: " + teller + "spelernaam: " + spelerAanBeurt.getTxfNaam1().getText());
     }
-    public void volgendeSpeler(){
-        
-       
-        
-        for(Speler speler: spelersArrayList){
-           // System.out.printf(speler.getTxfNaam1().getText());  
+
+    public void volgendeSpeler() {
+
+        for (Speler speler : spelersArrayList) {
+            // System.out.printf(speler.getTxfNaam1().getText());  
         }
         //System.out.println("before de speler teller: "+teller+"spelernaam: "+ spelerAanBeurt.getTxfNaam1().getText());
-        
-        if(teller==0){
-            spelerAanBeurt=spelersArrayList.get(++teller);
-        }else{
-            spelerAanBeurt=spelersArrayList.get(++teller % spelersArrayList.size());
+
+        if (teller == 0) {
+            spelerAanBeurt = spelersArrayList.get(++teller);
+        } else {
+            spelerAanBeurt = spelersArrayList.get(++teller % spelersArrayList.size());
         }
         //System.out.printf(" %n %d %s %n",teller,spelerAanBeurt.getTxfNaam1().getText());
-        System.out.println("after de speler teller: "+teller+"spelernaam: "+spelerAanBeurt.getTxfNaam1().getText());
-        
+        System.out.println("after de speler teller: " + teller + "spelernaam: " + spelerAanBeurt.getTxfNaam1().getText());
+
     }
 
     public Speler getSpelerAanBeurt() {
