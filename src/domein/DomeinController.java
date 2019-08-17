@@ -1,10 +1,20 @@
 package domein;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Stack;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -32,9 +42,16 @@ public class DomeinController {
     public ArrayList<Integer> tegelStapel = new ArrayList<>();
     public ArrayList<Integer> eigenStapel = new ArrayList<>();
     public Stack<Button> stapel2 = new Stack<>();
+    public Stack <Speler> winnaars=new Stack<>();
+    private String highScore="";
+    
 
     private ArrayList<Integer> omgedraaideTegels = new ArrayList<>();
     private Stack<Button> tegelsOm = new Stack<>();
+    
+    
+    
+    
 
 ////////// Klasses instantieren ////////////////////////////////////////////////////////////////////    
     Speler speler = new Speler(txfNaam1, dob, result, berekenAantalDobbelsteen, totaalScoreSpeler, eigenStapel, stapel2, berekenAantalWormen);///als je private Speler speler; dan geeft die een nullpointerexception
@@ -44,6 +61,24 @@ public class DomeinController {
         setSpelersList(spelersList);
         setSpelersArrayList(spelersArrayList);
 
+    }
+
+    
+    public Stack<Speler> getWinnaars() {
+        
+        Collections.sort(winnaars, new highscore());
+        return winnaars;
+    }
+    
+    public class highscore implements Comparator<Speler>{
+
+        
+
+        @Override
+        public int compare(Speler o1, Speler o2) {
+            return Integer.compare(o1.berekenWormen(),o2.berekenWormen());
+        }
+        
     }
 
     public Stack<Button> getTegelsOm() {
@@ -151,6 +186,7 @@ public class DomeinController {
         Collections.sort(spelersArrayList, new AgeComparator());
 
     }
+    
 
     public void eersteSpeler() {
         for (int i = 0; i < spelersArrayList.size(); i++) {
@@ -238,6 +274,72 @@ public class DomeinController {
 
     public int berekenAantalWormen() {
         return speler.berekenAantalWormen();
+    }
+    public String getHighScore(){
+        FileReader readFile=null;
+        BufferedReader reader=null;
+        try{
+         readFile=new FileReader("highscore.dat");
+         reader=new BufferedReader(readFile);
+        return reader.readLine();
+        
+        }catch(Exception e){
+            return "0";
+        }
+        finally{
+            
+            try {
+                if(reader!=null){
+                reader.close();
+                }
+            } catch (IOException ex) {
+               ex.printStackTrace();
+            }
+        }
+        
+        
+    }
+    public void initScore(){
+        if(highScore.equals("")){
+            highScore=this.getHighScore();
+        }
+        
+    }
+    public void giveScore(){
+        
+        
+        
+            highScore=winnaars.get(0).getTxfNaam1().getText() + ":"+ String.valueOf(winnaars.get(0).berekenWormen()); 
+            File scoreFile=new File("highScore.dat");
+            if(!scoreFile.exists()){
+                try{
+                    scoreFile.createNewFile();
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+            FileWriter writeFile=null;
+            BufferedWriter writer=null;
+            
+            try{
+                writeFile=new FileWriter(scoreFile);
+                writer=new BufferedWriter(writeFile);
+                writer.write(this.highScore);
+            }catch(Exception e ){
+                //errors
+                
+            }
+            finally{
+                
+                    try {
+                          if(writer!=null){
+                        writer.close();
+                          }
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                
+            }
     }
 
 }

@@ -49,6 +49,7 @@ public class HighscoreScherm extends BorderPane{
         
         Label lblHighscores = new Label("Highscores");
         lblHighscores.setId("lblHighscores");
+        System.out.printf("%s",dc.getHighScore());
         
         Button btnBack = new Button();
         btnBack.setOnAction(new EventHandler<ActionEvent>() 

@@ -7,6 +7,8 @@ package gui;
 
 import domein.DomeinController;
 import java.util.Collections;
+import java.util.Hashtable;
+import java.util.Set;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -43,14 +45,13 @@ public class WinnaarScherm extends BorderPane {
     private void buildGui() {
         getStylesheets().add("/css/winnaarscherm.css");
         int highestScore = 0;
-        
 
         BorderPane bp = new BorderPane();
         HBox hbox = new HBox();
         HBox hbox2 = new HBox();
-        System.out.printf("de spelers zijn");
+
         for (int spelers = 0; spelers < dc.getSpelersArrayList().size(); spelers++) {
-            System.out.printf("speler %s met een score van %d %n", dc.getSpelersArrayList().get(spelers).getTxfNaam1().getText(), dc.getSpelersArrayList().get(spelers).getStapel2().isEmpty() ? 0 : dc.getSpelersArrayList().get(spelers).berekenWormen());
+
             if (dc.getSpelersArrayList().get(spelers).berekenAantalWormen() == highestScore) {
                 if (Integer.parseInt(dc.getSpelersArrayList().get(spelers).getStapel2().peek().getId())
                         > (Integer.parseInt(dc.getSpelersArrayList().get(winnaar).getStapel2().peek().getId()))) {
@@ -67,7 +68,11 @@ public class WinnaarScherm extends BorderPane {
         }
 
         // label vr de winnaar
-        Label lblWinnaar = new Label(String.format("De grote winnaar is: %s met een score van %d wormen!!!", dc.getSpelersArrayList().get(winnaar).getTxfNaam1().getText(), highestScore));
+        Label lblWinnaar = new Label(String.format("De  winnaar is: %s met een score van %d wormen!!!", dc.getSpelersArrayList().get(winnaar).getTxfNaam1().getText(), highestScore));
+
+        dc.getWinnaars().add(dc.getSpelersArrayList().get(winnaar));
+        dc.initScore();
+        dc.giveScore();
         lblWinnaar.setId("lblWinnaar");
 
         Button btnOpnieuwSpelen = new Button();
