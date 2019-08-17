@@ -32,10 +32,9 @@ public class Tafel extends BorderPane {
     private ArrayList<Integer> idDobbels;
     private final int dobbelstenenAantal = 8;
     private DropShadow shadow = new DropShadow();
-    private int gooi;
 
-    private int theSteal = 0;
     private int victim;
+    private int berekenAantalWormen;
 
     private int g = 0;
     private boolean nietAllemaalLeeg = false;
@@ -139,14 +138,21 @@ public class Tafel extends BorderPane {
                     btnUpperTileSpeler1.setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent ae) {
-                            if (Integer.parseInt(btnUpperTileSpeler1.getId()) == dc.berekenScore()) {
-                                steelTegel(victim);
+                            if (Integer.parseInt(btnUpperTileSpeler1.getId()) == dc.berekenScore() ) {
+                                //Button tegel = dc.getSpelersArrayList().get(victimidx).getStapel2().pop();
+                               // dc.getSpelersArrayList().get(huidigeSpeler).getStapel2().pop();
+                                gpRight.getChildren().remove( dc.getSpelersArrayList().get(huidigeSpeler).getStapel2().pop());
+
+                                dc.getSpelerAanBeurt().getStapel2().push(btnUpperTileSpeler1);
+                                gpRight.getChildren().add(dc.getSpelerAanBeurt().getStapel2().push(btnUpperTileSpeler1));
+
                             } else {
                                 Alert fail = new Alert(Alert.AlertType.INFORMATION);
                                 fail.setHeaderText("POP UP");
-                                fail.setContentText(" Je mag enkel een tegel stelen als die gelijk is aan uw score.");
+                                fail.setContentText(" Je mag enkel een tegel stelen als die gelijk is aan uw score en het moet van de tegenstander zijn.");
                                 fail.showAndWait();
                             }
+                            
 
                         }
                     });
@@ -308,17 +314,17 @@ public class Tafel extends BorderPane {
 
                 if (dc.getGekozen().contains(6)) {
 
-                    if (!dc.getSpelerAanBeurt().getStapel2().isEmpty()) {
-                        nietAllemaalLeeg = true;
-                    }
-
                     for (int tegel = 0; tegel < tegels.size(); tegel++) {
                         if (tegel == dc.berekenScore()) {
                             tegelInRij = true;
                         }
                     }
 
-                    
+                    for (int tegel = 0; tegel < tegels.size(); tegel++) {
+                        if (tegel <= dc.berekenScore()) {
+                            tegelBeschikbaar = true;
+                        }
+                    }
 
                     if (tegelInRij == false && steal == false && tegelBeschikbaar == false) {
                         Alert fail = new Alert(Alert.AlertType.INFORMATION);
@@ -347,7 +353,7 @@ public class Tafel extends BorderPane {
                     } else {
                         for (int tegel = 0; tegel < tegels.size(); tegel++) {
                             if (tegel <= dc.berekenScore()) {
-                               tegelBeschikbaar = true;
+                                tegelBeschikbaar = true;
                             }
                         }
                     }
@@ -575,7 +581,7 @@ public class Tafel extends BorderPane {
         }
     }
 
-    public void steelTegel(int victimidx) {
+    /*public void steelTegel(int victimidx) {
         System.out.println(victimidx);
         Button tegel = dc.getSpelersArrayList().get(victimidx).getStapel2().pop();
         gpRight.getChildren().remove(tegel);
@@ -583,6 +589,16 @@ public class Tafel extends BorderPane {
         dc.getSpelerAanBeurt().getStapel2().push(tegel);
         gpRight.getChildren().add(dc.getSpelerAanBeurt().getStapel2().push(tegel));
 
-    }
+    }*/
 
+ /* private int berekenWormenGui() {
+        berekenAantalWormen = 0;
+        for (int awvs = 0; awvs < dc.stapel2.size(); awvs++) {
+            switch (awvs) {
+                case 
+
+            }
+        }
+        return berekenAantalWormen;
+    }*/
 }

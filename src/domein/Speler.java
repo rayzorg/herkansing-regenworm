@@ -26,7 +26,7 @@ public class Speler {
     public int symbool;
     public int kiesTegel;
     public ArrayList<Integer> eigenStapel = new ArrayList<>();
-    public Stack <Button> stapel2 = new Stack<>();
+    public Stack<Button> stapel2 = new Stack<>();
 ///////////////// Klasses instantieren ///////////////////////////////////////////////////////////    
     Scanner input = new Scanner(System.in);
     Dobbelsteen dobbelstenen = new Dobbelsteen();
@@ -44,15 +44,13 @@ public class Speler {
         this.berekenAantalDobbelsteen = berekenAantalDobbelsteen;
         this.totaalScoreSpeler = totaalScoreSpeler;
         this.eigenStapel = eigenStapel;
-        this.stapel2=stapel2;
+        this.stapel2 = stapel2;
         this.berekenAantalWormen = berekenAantalWormen;
     }
 
-    public Stack <Button> getStapel2() {
+    public Stack<Button> getStapel2() {
         return stapel2;
     }
-
-    
 
     public LocalDate getDob() {
         return dob;
@@ -221,6 +219,96 @@ public class Speler {
         return berekenAantalWormen;
     }
 
+    public int berekenWormen() {
+        berekenAantalWormen = 0;
+        for (int wormen = 0; wormen < stapel2.size(); wormen++) {
+            switch (stapel2.get(wormen).getId()) {
+                case "21":
+                    if (Integer.parseInt(stapel2.get(wormen).getId()) == 21) {
+                        berekenAantalWormen += 1;
+                    }
+                    break;
+                case "22":
+                    if (Integer.parseInt(stapel2.get(wormen).getId()) == 22) {
+                        berekenAantalWormen += 1;
+                    }
+                    break;
+                case "23":
+                    if (Integer.parseInt(stapel2.get(wormen).getId()) == 23) {
+                        berekenAantalWormen += 1;
+                    }
+                    break;
+                case "24":
+                    if (Integer.parseInt(stapel2.get(wormen).getId()) == 24) {
+                        berekenAantalWormen += 1;
+                    }
+                    break;
+                case "25":
+                    if (Integer.parseInt(stapel2.get(wormen).getId()) == 25) {
+                        berekenAantalWormen += 2;
+                    }
+                    break;
+                case "26":
+                    if (Integer.parseInt(stapel2.get(wormen).getId()) == 26) {
+                        berekenAantalWormen += 2;
+                    }
+                    break;
+                case "27":
+                    if (Integer.parseInt(stapel2.get(wormen).getId()) == 27) {
+                        berekenAantalWormen += 2;
+                    }
+                    break;
+                case "28":
+                    if (Integer.parseInt(stapel2.get(wormen).getId()) == 28) {
+                        berekenAantalWormen += 2;
+                    }
+                    break;
+                case "29":
+                    if (Integer.parseInt(stapel2.get(wormen).getId()) == 29) {
+                        berekenAantalWormen += 3;
+                    }
+                    break;
+                case "30":
+                    if (Integer.parseInt(stapel2.get(wormen).getId()) == 30) {
+                        berekenAantalWormen += 3;
+                    }
+                    break;
+                case "31":
+                    if (Integer.parseInt(stapel2.get(wormen).getId()) == 31) {
+                        berekenAantalWormen += 3;
+                    }
+                    break;
+                case "32":
+                    if (Integer.parseInt(stapel2.get(wormen).getId()) == 32) {
+                        berekenAantalWormen += 3;
+                    }
+                    break;
+                case "33":
+                    if (Integer.parseInt(stapel2.get(wormen).getId()) == 33) {
+                        berekenAantalWormen += 4;
+                    }
+                    break;
+                case "34":
+                    if (Integer.parseInt(stapel2.get(wormen).getId()) == 34) {
+                        berekenAantalWormen += 4;
+                    }
+                    break;
+                case "35":
+                    if (Integer.parseInt(stapel2.get(wormen).getId()) == 35) {
+                        berekenAantalWormen += 4;
+                    }
+                    break;
+                case "36":
+                    if (Integer.parseInt(stapel2.get(wormen).getId()) == 36) {
+                        berekenAantalWormen += 4;
+                    }
+                    break;
+
+            }
+        }
+        return berekenAantalWormen;
+    }
+
     /*public int getAantalWormen() {
         return aantalWormen;
     }*/
@@ -263,6 +351,5 @@ public class Speler {
     public void setKiesTegel(int kiesTegel) {
         this.kiesTegel = kiesTegel;
     }
-    
 
 }

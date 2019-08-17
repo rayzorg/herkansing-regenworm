@@ -45,6 +45,10 @@ public class WinnaarScherm extends BorderPane {
         BorderPane bp = new BorderPane();
         HBox hbox = new HBox();
         HBox hbox2 = new HBox();
+        System.out.printf("de spelers zijn");
+        for(int spelers=0;spelers<dc.getSpelersArrayList().size();spelers++){
+            System.out.printf("speler %s met een score van %d %n",dc.getSpelersArrayList().get(spelers).getTxfNaam1().getText(),dc.getSpelersArrayList().get(spelers).berekenWormen());
+        }
 
         // label vr de winnaar
         Label lblWinnaar = new Label(String.format("De grote winnaar is: %s met een score van %d wormen!!!", winnaar, wormenWinnaar));
