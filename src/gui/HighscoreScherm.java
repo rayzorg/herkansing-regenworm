@@ -48,8 +48,10 @@ public class HighscoreScherm extends BorderPane{
         GridPane gp = new GridPane();
         
         Label lblHighscores = new Label("Highscores");
+        Label highScore =new Label(dc.getHighScore());
+        
         lblHighscores.setId("lblHighscores");
-        System.out.printf("%s",dc.getHighScore());
+        
         
         Button btnBack = new Button();
         btnBack.setOnAction(new EventHandler<ActionEvent>() 
@@ -67,12 +69,12 @@ public class HighscoreScherm extends BorderPane{
         btnBack.setPrefSize(100, 100);
         
         // gp (gridpane) voor de highscores
-        
+        highScore.setAlignment(Pos.CENTER);
         lblHighscores.setAlignment(Pos.CENTER);
         lblHighscores.setPadding(new Insets(-100,0,0,0));
         
         knop.getChildren().add(btnBack);
-        vbox.getChildren().addAll(lblHighscores, gp);
+        vbox.getChildren().addAll(lblHighscores,highScore, gp);
         
         knop.setAlignment(Pos.BOTTOM_CENTER);
         knop.setPadding(new Insets(15));
