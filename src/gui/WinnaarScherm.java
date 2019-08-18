@@ -7,6 +7,8 @@ package gui;
 
 import domein.DomeinController;
 import domein.highscoreSpeler;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -91,13 +93,13 @@ public class WinnaarScherm extends BorderPane {
 
             }
             if (spelers.size() < 10 && !bSpelerAdded) {
-                {
-                    HighscoresMapper.insertScore(dc.getWinnaars().get(0).getTxfNaam1().getText(), dc.getWinnaars().get(0).berekenWormen());
-                }
+                
+
+                HighscoresMapper.insertScore(dc.getWinnaars().get(0).getTxfNaam1().getText(), dc.getWinnaars().get(0).berekenWormen());
 
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            
         }
 
         lblWinnaar.setId("lblWinnaar");

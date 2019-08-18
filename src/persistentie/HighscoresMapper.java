@@ -23,8 +23,6 @@ public class HighscoresMapper {
 
             while (myRs.next()) {
                 spelers.put(myRs.getString("naam"), new highscoreSpeler(myRs.getString("naam"), myRs.getInt("highScore")));
-             
-                System.out.println(myRs.getString("naam") + " : " + myRs.getInt("highScore"));
 
             }
             return spelers;

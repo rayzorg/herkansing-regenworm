@@ -115,6 +115,9 @@ public class Tafel extends BorderPane {
         btnStop.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent ae) {
+                for(int spelers=0;spelers<tegels.size();spelers++){
+                    tegels.get(spelers).setDisable(true);
+                }
 
                 for (int i = 0; i < btnDices.size(); i++) {
                     btnDices.get(i).setId("10");
