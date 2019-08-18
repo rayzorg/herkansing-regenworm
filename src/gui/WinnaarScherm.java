@@ -75,29 +75,31 @@ public class WinnaarScherm extends BorderPane {
         Label lblWinnaar = new Label(String.format("De  winnaar is: %s met een score van %d wormen!!!", dc.getSpelersArrayList().get(winnaar).getTxfNaam1().getText(), highestScore));
         dc.getWinnaars().add(dc.getSpelersArrayList().get(winnaar));
         HashMap<String, highscoreSpeler> spelers = HighscoresMapper.geefScore();
+        try {
+            boolean bSpelerAdded = false;
+            for (String i : spelers.keySet()) {
 
-        boolean bSpelerAdded = false;
-        for (String i : spelers.keySet()) {
+                if (spelers.get(i).getHighscore() < dc.getWinnaars().get(0).berekenWormen()) {
+                    if (spelers.containsKey(dc.winnaars.get(0).getTxfNaam1().getText())) {
+                        HighscoresMapper.updateScore(dc.getWinnaars().get(0).getTxfNaam1().getText(), dc.getWinnaars().get(0).berekenWormen(), spelers.get(i).getNaam());
+                        bSpelerAdded = true;
+                    } else {
+                        HighscoresMapper.insertScore(dc.getWinnaars().get(0).getTxfNaam1().getText(), dc.getWinnaars().get(0).berekenWormen());
+                    }
 
-            if (spelers.get(i).getHighscore() < dc.getWinnaars().get(0).berekenWormen()) {
-                if (spelers.get(i).getNaam().equals(dc.getWinnaars().get(0).getTxfNaam1().getText())) {
-                    HighscoresMapper.updateScore(dc.getWinnaars().get(0).getTxfNaam1().getText(), dc.getWinnaars().get(0).berekenWormen(), spelers.get(i).getNaam());
-                    bSpelerAdded = true;
-                } else {
+                }
+
+            }
+            if (spelers.size() < 10 && !bSpelerAdded) {
+                {
                     HighscoresMapper.insertScore(dc.getWinnaars().get(0).getTxfNaam1().getText(), dc.getWinnaars().get(0).berekenWormen());
                 }
 
             }
-
-        }
-        if (spelers.size() < 10 && !bSpelerAdded) {
-            {
-                HighscoresMapper.insertScore(dc.getWinnaars().get(0).getTxfNaam1().getText(), dc.getWinnaars().get(0).berekenWormen());
-            }
-
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-       
         lblWinnaar.setId("lblWinnaar");
 
         Button btnOpnieuwSpelen = new Button();

@@ -23,13 +23,13 @@ public class HighscoresMapper {
 
             while (myRs.next()) {
                 spelers.put(myRs.getString("naam"), new highscoreSpeler(myRs.getString("naam"), myRs.getInt("highScore")));
-                //spelers.add(new highscoreSpeler(myRs.getString("naam"),myRs.getInt("highScore")));
+             
                 System.out.println(myRs.getString("naam") + " : " + myRs.getInt("highScore"));
 
             }
             return spelers;
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }

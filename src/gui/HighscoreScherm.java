@@ -25,7 +25,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 import javafx.scene.layout.StackPane;
 import persistentie.HighscoresMapper;
 
@@ -56,10 +60,14 @@ public class HighscoreScherm extends BorderPane {
         Label lblHighscores = new Label("Highscores");
 
         HashMap<String, highscoreSpeler> spelers = HighscoresMapper.geefScore();
+        ArrayList<highscoreSpeler> spelersByScore = new ArrayList<>(spelers.values());
+
+        Collections.sort(spelersByScore, new ScoreComparator());
+
         int g = 0;
 
-        for (String i : spelers.keySet()) {
-            Label highScore = new Label(spelers.get(i).getNaam() + " : " + spelers.get(i).getHighscore());
+        for (highscoreSpeler p : spelersByScore) {
+            Label highScore = new Label(p.getNaam() + " : " + p.getHighscore());
             grid.add(highScore, 0, g++);
 
         }
@@ -97,4 +105,14 @@ public class HighscoreScherm extends BorderPane {
         this.setCenter(bp);
 
     }
+
+    public class ScoreComparator implements Comparator<highscoreSpeler> {
+
+        @Override
+        public int compare(highscoreSpeler o1, highscoreSpeler o2) {
+            return o2.getHighscore() - o1.getHighscore();
+        }
+
+    }
+
 }

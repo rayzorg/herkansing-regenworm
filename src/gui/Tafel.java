@@ -67,9 +67,7 @@ public class Tafel extends BorderPane {
 
         VBox vboxMiddle = new VBox();
 
-        // GridPane gpCenter = new GridPane();
         GridPane gpLeft = new GridPane();
-        //GridPane gpRight = new GridPane();
 
         HBox info = new HBox();
         HBox tileRow = new HBox();
@@ -84,14 +82,11 @@ public class Tafel extends BorderPane {
         lblAantalDblOver.setId("lblAantalDblOver8");
         lblAantalDblOver.setPrefSize(200, 125);
 
-        ArrayList<Button> btnUpperTilesPlayers = new ArrayList<>(); // op basis van het aantal spelers aan deze array de upper tile buttons toevoegen
-        // Button btnStop = new Button();
         Button btnGooi = new Button();
         Button btnNieuwSpel = new Button();
         Button btnSaveAndQuit = new Button();
 
         Label lblCurrentPlayer = new Label();
-        // Label lblScoreCurrentPlayer = new Label();
 
         dc.eersteSpeler();
 
@@ -112,7 +107,7 @@ public class Tafel extends BorderPane {
 
             btnUpperTileSpeler1.setId("btnUpperTileSpeler1");
             btnUpperTileSpeler1.setPrefSize(100, 160);
-            btnUpperTilesPlayers.add(btnUpperTileSpeler1);
+
             gpRight.add(btnUpperTileSpeler1, g + 1, spelers);
 
         }
@@ -138,10 +133,9 @@ public class Tafel extends BorderPane {
                     btnUpperTileSpeler1.setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent ae) {
-                            if (Integer.parseInt(btnUpperTileSpeler1.getId()) == dc.berekenScore() ) {
-                                //Button tegel = dc.getSpelersArrayList().get(victimidx).getStapel2().pop();
-                               // dc.getSpelersArrayList().get(huidigeSpeler).getStapel2().pop();
-                                gpRight.getChildren().remove( dc.getSpelersArrayList().get(huidigeSpeler).getStapel2().pop());
+                            if (Integer.parseInt(btnUpperTileSpeler1.getId()) == dc.berekenScore()) {
+                               
+                                gpRight.getChildren().remove(dc.getSpelersArrayList().get(huidigeSpeler).getStapel2().pop());
 
                                 dc.getSpelerAanBeurt().getStapel2().push(btnUpperTileSpeler1);
                                 gpRight.getChildren().add(dc.getSpelerAanBeurt().getStapel2().push(btnUpperTileSpeler1));
@@ -152,7 +146,6 @@ public class Tafel extends BorderPane {
                                 fail.setContentText(" Je mag enkel een tegel stelen als die gelijk is aan uw score en het moet van de tegenstander zijn.");
                                 fail.showAndWait();
                             }
-                            
 
                         }
                     });
@@ -163,7 +156,7 @@ public class Tafel extends BorderPane {
                     gpRight.add(btnUpperTileSpeler1, g + 1, huidigeSpeler);
 
                 }
-                //}
+                
                 dc.resetScore();
                 dc.resetAantalDobbelsteen();
                 dc.getGekozen().clear();
@@ -188,7 +181,7 @@ public class Tafel extends BorderPane {
         btnStop.setPrefSize(200, 50);
         btnStop.setDisable(true);
 
-        //Button btnGooi = new Button();
+       
         btnGooi.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -260,7 +253,7 @@ public class Tafel extends BorderPane {
                             gpRight.getChildren().remove(dc.getSpelerAanBeurt().getStapel2().pop());
 
                         }
-                        //einde checken
+                      
                     }
 
                 }
@@ -272,7 +265,7 @@ public class Tafel extends BorderPane {
         btnGooi.setPrefSize(200, 50);
 
         ////////////////////////////////////////////////////////
-        // Button btnNieuwSpel = new Button();
+       
         btnNieuwSpel.setId("btnNieuwSpel");
         btnNieuwSpel.setPrefSize(220, 50);
 

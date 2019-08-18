@@ -3,7 +3,6 @@ package domein;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.Scanner;
 import java.util.Stack;
 import javafx.scene.control.Button;
@@ -15,7 +14,6 @@ public class Speler {
     private ArrayList<Integer> geworpen = new ArrayList();
     public ArrayList<Integer> gekozen = new ArrayList();
     public int[] zijde = new int[7];
-    private int[] stapel;
     private int berekenAantalWormen;
     private String naamSpeler;
     private LocalDate dob;
@@ -163,13 +161,13 @@ public class Speler {
     }
 
     public int berekenScore() {
-
+        int minAantal = Collections.frequency(geworpen, symbool);
         if (symbool < 6) {
-            totaalScoreSpeler += symbool * zijde[symbool];
+            totaalScoreSpeler += symbool * minAantal;
         }
 
         if (symbool == 6) {
-            totaalScoreSpeler += (symbool * zijde[symbool]) - (zijde[symbool] * 1);
+            totaalScoreSpeler += (symbool * minAantal) - (minAantal * 1);
 
         }
 
@@ -183,9 +181,7 @@ public class Speler {
         return totaalScoreSpeler;
     }
 
-    /* public void omgedraaideTegels(){  // geen methode voor nodig? gwn verwijderen uit array Tegel
-            
-    }*/
+    
     public int berekenAantalWormen() {
         berekenAantalWormen = 0;
         for (int awvs : eigenStapel) {
@@ -309,41 +305,6 @@ public class Speler {
         return berekenAantalWormen;
     }
 
-    /*public int getAantalWormen() {
-        return aantalWormen;
-    }*/
-
- /*public void setAantalWormen() {
-        aantalWormen = 0;
-        for(int awvs : eigenStapel){
-            switch(awvs){
-                case 21:
-                case 22:
-                case 23:
-                case 24:
-                aantalWormen += 1;
-                break;
-                case 25:
-                case 26:
-                case 27:
-                case 28:
-                aantalWormen += 2;
-                break;
-                case 29:
-                case 30:
-                case 31:
-                case 32:
-                aantalWormen += 3;
-                break;
-                case 33:
-                case 34:
-                case 35:
-                case 36:
-                aantalWormen += 4;
-                break;
-            }
-        }
-    }*/
     public int getKiesTegel() {
         return kiesTegel;
     }

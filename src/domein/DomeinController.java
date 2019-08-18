@@ -1,3 +1,4 @@
+
 package domein;
 
 import java.io.BufferedReader;
@@ -45,7 +46,6 @@ public class DomeinController {
     public ArrayList<Integer> eigenStapel = new ArrayList<>();
     public Stack<Button> stapel2 = new Stack<>();
     public Stack<Speler> winnaars = new Stack<>();
-    
 
     private ArrayList<Integer> omgedraaideTegels = new ArrayList<>();
     private Stack<Button> tegelsOm = new Stack<>();
@@ -55,24 +55,14 @@ public class DomeinController {
 
 ////////// Methodes ////////////////////////////////////////////////////////////////////////////////    
     public DomeinController() {
-        setSpelersList(spelersList);
+
         setSpelersArrayList(spelersArrayList);
 
     }
 
     public Stack<Speler> getWinnaars() {
 
-        Collections.sort(winnaars, new highscore());
         return winnaars;
-    }
-
-    public class highscore implements Comparator<Speler> {
-
-        @Override
-        public int compare(Speler o1, Speler o2) {
-            return Integer.compare(o1.berekenWormen(), o2.berekenWormen());
-        }
-
     }
 
     public Stack<Button> getTegelsOm() {
@@ -141,14 +131,6 @@ public class DomeinController {
     }
 ///////////////
 
-    public Speler[] getSpelersList() {
-        return spelersList;
-    }
-
-    public void setSpelersList(Speler[] spelersList) {
-        this.spelersList = spelersList;
-    }
-
     public TextField getTxfNaam1() {
         return speler.getTxfNaam1();
     }
@@ -165,18 +147,11 @@ public class DomeinController {
         return spelersArrayList;
     }
 
-    /* public void spelerArrayAanmaken(int aantalSpelers) {
-
-        spelersList = new Speler[aantalSpelers];
-    }*/
-    ////nodig om spelers af te printen anders geeft die symbolen ipv namen
-    //en heeft geen invloed op output (moet kijken naar speler klasse
     //wijzigingen tov ui ;textfield,localdate
     public void spelerInArrayToevoegen(TextField txfNaam1, int aantal, LocalDate dob, int result, int berekenAantalDobbelsteen, int totaalScoreSpeler, ArrayList<Integer> eigenStapel, Stack<Button> stapel2, int berekenAantalWormen) {
 
         spelersArrayList.add(new Speler(txfNaam1, dob, result, berekenAantalDobbelsteen, totaalScoreSpeler, eigenStapel, stapel2, berekenAantalWormen));
-        //spelersList[aantal] = new Speler(txfNaam1, dob, result, berekenAantalDobbelsteen, totaalScoreSpeler, eigenStapel, berekenAantalWormen);
-        ///////////gaat hier array in volgore steken 
+
         Collections.sort(spelersArrayList, new AgeComparator());
 
     }
@@ -269,7 +244,4 @@ public class DomeinController {
         return speler.berekenAantalWormen();
     }
 
-    
-
-   
 }
