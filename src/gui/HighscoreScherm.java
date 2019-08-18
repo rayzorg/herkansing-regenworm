@@ -6,6 +6,7 @@
 package gui;
 
 import domein.DomeinController;
+import domein.highscoreSpeler;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -22,69 +23,78 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import javafx.scene.layout.StackPane;
+import persistentie.HighscoresMapper;
 
 /**
  *
  * @author bjorn
  */
-public class HighscoreScherm extends BorderPane{
+public class HighscoreScherm extends BorderPane {
+
     private final DomeinController dc;
     private final Startscherm sts;
-    
-    
-    public HighscoreScherm(Startscherm sts, DomeinController dc){
+
+    public HighscoreScherm(Startscherm sts, DomeinController dc) {
         this.sts = sts;
         this.dc = dc;
         buildGui();
     }
-    
-    private void buildGui(){
-        
+
+    private void buildGui() {
+
         getStylesheets().add("/css/highscoreScherm.css");
-        
+
         BorderPane bp = new BorderPane();
         HBox knop = new HBox();
         VBox vbox = new VBox();
         GridPane gp = new GridPane();
-        
+        GridPane grid = new GridPane();
         Label lblHighscores = new Label("Highscores");
-        Label highScore =new Label(dc.getHighScore());
-        
+
+        HashMap<String, highscoreSpeler> spelers = HighscoresMapper.geefScore();
+        int g = 0;
+
+        for (String i : spelers.keySet()) {
+            Label highScore = new Label(spelers.get(i).getNaam() + " : " + spelers.get(i).getHighscore());
+            grid.add(highScore, 0, g++);
+
+        }
+
         lblHighscores.setId("lblHighscores");
-        
-        
+
         Button btnBack = new Button();
-        btnBack.setOnAction(new EventHandler<ActionEvent>() 
-        {
+        btnBack.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent evt) 
-            {
-                
+            public void handle(ActionEvent evt) {
+
                 Stage stage = (Stage) getScene().getWindow();
                 stage.setScene(sts.getScene());
             }
         });
-        
+
         btnBack.setId("btnBack");
         btnBack.setPrefSize(100, 100);
-        
+
         // gp (gridpane) voor de highscores
-        highScore.setAlignment(Pos.CENTER);
+        grid.setAlignment(Pos.CENTER);
         lblHighscores.setAlignment(Pos.CENTER);
-        lblHighscores.setPadding(new Insets(-100,0,0,0));
-        
+        lblHighscores.setPadding(new Insets(-100, 0, 0, 0));
+
         knop.getChildren().add(btnBack);
-        vbox.getChildren().addAll(lblHighscores,highScore, gp);
-        
+        vbox.getChildren().addAll(lblHighscores, gp, grid);
+
         knop.setAlignment(Pos.BOTTOM_CENTER);
         knop.setPadding(new Insets(15));
         vbox.setAlignment(Pos.CENTER);
-        
-        
+
         bp.setCenter(vbox);
         bp.setBottom(knop);
-        
+
         this.setCenter(bp);
-        
+
     }
 }

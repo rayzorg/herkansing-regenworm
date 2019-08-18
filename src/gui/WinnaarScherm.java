@@ -6,7 +6,10 @@
 package gui;
 
 import domein.DomeinController;
+import domein.highscoreSpeler;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Set;
 import javafx.event.ActionEvent;
@@ -19,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import persistentie.HighscoresMapper;
 
 /**
  *
@@ -69,10 +73,31 @@ public class WinnaarScherm extends BorderPane {
 
         // label vr de winnaar
         Label lblWinnaar = new Label(String.format("De  winnaar is: %s met een score van %d wormen!!!", dc.getSpelersArrayList().get(winnaar).getTxfNaam1().getText(), highestScore));
-
         dc.getWinnaars().add(dc.getSpelersArrayList().get(winnaar));
-        dc.initScore();
-        dc.giveScore();
+        HashMap<String, highscoreSpeler> spelers = HighscoresMapper.geefScore();
+
+        boolean bSpelerAdded = false;
+        for (String i : spelers.keySet()) {
+
+            if (spelers.get(i).getHighscore() < dc.getWinnaars().get(0).berekenWormen()) {
+                if (spelers.get(i).getNaam().equals(dc.getWinnaars().get(0).getTxfNaam1().getText())) {
+                    HighscoresMapper.updateScore(dc.getWinnaars().get(0).getTxfNaam1().getText(), dc.getWinnaars().get(0).berekenWormen(), spelers.get(i).getNaam());
+                    bSpelerAdded = true;
+                } else {
+                    HighscoresMapper.insertScore(dc.getWinnaars().get(0).getTxfNaam1().getText(), dc.getWinnaars().get(0).berekenWormen());
+                }
+
+            }
+
+        }
+        if (spelers.size() < 10 && !bSpelerAdded) {
+            {
+                HighscoresMapper.insertScore(dc.getWinnaars().get(0).getTxfNaam1().getText(), dc.getWinnaars().get(0).berekenWormen());
+            }
+
+        }
+
+       
         lblWinnaar.setId("lblWinnaar");
 
         Button btnOpnieuwSpelen = new Button();

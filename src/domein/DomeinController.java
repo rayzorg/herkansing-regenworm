@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,7 +45,7 @@ public class DomeinController {
     public ArrayList<Integer> eigenStapel = new ArrayList<>();
     public Stack<Button> stapel2 = new Stack<>();
     public Stack<Speler> winnaars = new Stack<>();
-    private String highScore = "";
+    
 
     private ArrayList<Integer> omgedraaideTegels = new ArrayList<>();
     private Stack<Button> tegelsOm = new Stack<>();
@@ -268,80 +269,7 @@ public class DomeinController {
         return speler.berekenAantalWormen();
     }
 
-    public String getHighScore() {
-        FileReader readFile = null;
-        BufferedReader reader = null;
-        try {
-            readFile = new FileReader("highscore.dat");
-            reader = new BufferedReader(readFile);
-            return reader.readLine();
+    
 
-        } catch (Exception e) {
-            return "Nobody:0";
-        } finally {
-
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-
-    }
-
-    public void initScore() {
-        if (highScore.equals("")) {
-            highScore = this.getHighScore();
-        }
-
-    }
-
-    public void giveScore() {
-        System.out.println(highScore);
-        if(winnaars.get(0).berekenWormen()> Integer.parseInt(highScore.split(":")[1])){
-
-        highScore = winnaars.get(0).getTxfNaam1().getText() + ":" + String.valueOf(winnaars.get(0).berekenWormen());
-        File scoreFile = new File("highScore.dat");
-        Scanner scan;
-        String str=null;
-        
-        if (!scoreFile.exists()) {
-            try {
-                scoreFile.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        FileWriter writeFile = null;
-        BufferedWriter writer = null;
-
-        try {
-            writeFile = new FileWriter(scoreFile);
-            writer = new BufferedWriter(writeFile);
-
-            scan=new Scanner(this.highScore);
-            str=scan.nextLine();
-            while(scan.hasNextLine()){
-                str=str.concat("%n"+scan.nextLine());
-            }
-            writer.write(this.highScore);
-        } catch (Exception e) {
-            //errors
-
-        } finally {
-
-            try {
-                if (writer != null) {
-                    writer.close();
-                }
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-
-        }
-        }
-    }
-
+   
 }
